@@ -60,7 +60,7 @@ class Fincas extends Component {
                  </div>
                 <div className="row">
 
-                    <div className="col-md-10">
+                    <div className="col-md-10"> 
                  
                         <TarjetasFincas />
                       

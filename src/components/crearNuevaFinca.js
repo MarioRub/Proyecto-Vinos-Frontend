@@ -24,6 +24,10 @@ const PostApi = ({nombre_finca,descripcion_finca,departamento_finca,municipio_fi
   }) 
 )
 
+function handleDelete() {
+  alert('You clicked the delete icon.');
+}
+
 
 
 class crearNuevaFinca extends Component {
@@ -76,7 +80,7 @@ class crearNuevaFinca extends Component {
                  <div style={{ marginTop: 20 }} >
                 
 
-                <Button variant="contained" color="primary"   style={{ marginTop: 1 }}  >
+                <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={handleDelete} >
                  Guardar
                  
                 </Button>

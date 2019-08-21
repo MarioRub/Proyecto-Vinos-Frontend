@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import CircularProgress from "@material-ui/core/CircularProgress"
 import classnames from 'classnames';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -11,6 +12,8 @@ import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
 import Button from '@material-ui/core/Button';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const styles = theme => ({
   title: {
@@ -43,7 +46,9 @@ const styles = theme => ({
   },
 });
 
-class RecipeReviewCard extends React.Component {
+
+
+class TarjetasFincas extends React.Component {
   state = { expanded: false,}
 
   constructor(props) {
@@ -66,12 +71,13 @@ class RecipeReviewCard extends React.Component {
           });
   
   }
+  
 
   render() {
     const { classes } = this.props;
     var  {isLoaded,items} = this.state;
     if(!isLoaded){
-      return<div>Is Loading...</div>
+      return<div><CircularProgress size={50} /></div>
     }else{
       return(
         <div className="row">
@@ -82,6 +88,7 @@ class RecipeReviewCard extends React.Component {
                   <IconButton aria-label="settings">
                     <MoreVertIcon/>
                   </IconButton>}
+            
                 titleTypographyProps={{variant:'h5'}}
                 title={item.nombre} 
                  avatar={
@@ -125,4 +132,4 @@ class RecipeReviewCard extends React.Component {
   }
 }
 
-export default withStyles(styles)(RecipeReviewCard);
+export default withStyles(styles)(TarjetasFincas);

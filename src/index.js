@@ -5,13 +5,8 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/react-modal-video/scss/modal-video.scss';
 import './index.css';
 import App from './App';
-import Edit from './components/Edit';
-import Create from './components/Create';
-import Show from './components/Show';
 import aboutus from './components/aboutus';
-import catalogo from './components/catalogo';
-import mostrarcatalogo from './components/mostrarcatalogo';
-import cuentavendedor from './components/cuentavendedor';
+import Fincas from './components/Fincas';
 import Appcss from './App.css'
 import NotFound from './components/NotFound';
 import {
@@ -21,6 +16,7 @@ import {
   
 
 import registerServiceWorker from './registerServiceWorker';
+import crearNuevaFinca from './components/crearNuevaFinca';
 
 ReactDOM.render(
     <Router>
@@ -28,14 +24,10 @@ ReactDOM.render(
             <Switch>
 
                 <Route exact path='/' component={App} />
-                <Route path='/edit/:id' component={Edit} />
-                <Route path='/create' component={Create} />
-                <Route path='/show/:id' component={Show} />
 
-                <Route path='/cuentavendedor' component={cuentavendedor} />
                 <Route path='/aboutus' component={aboutus} />
-                <Route path='/catalogo' component={catalogo} />
-                <Route path='/mostrarcatalogo/:id' component={mostrarcatalogo} />
+                <Route path='/Fincas' component={Fincas} />
+                <Route path='/crearNuevaFinca' component={crearNuevaFinca} />
 
                 <Route component={NotFound} />
             </Switch>

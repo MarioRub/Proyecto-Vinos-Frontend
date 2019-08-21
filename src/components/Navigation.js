@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import MenuItem from '@material-ui/core/MenuItem';
 
 class Navigation extends Component {
     render() {
@@ -15,10 +16,8 @@ class Navigation extends Component {
                     </div>
                     <div className="col-md-6">
                         <ul>
-                            <li><Link to="/"><h6>Inicio</h6></Link></li>
-                            <li><br/></li>
-                            <li><Link to="/catalogo"><h6>Procesos</h6></Link></li>
-                            
+                            <li><Link to="/"><MenuItem>Inicio</MenuItem></Link></li>
+                            <li><Link to="/Fincas"><MenuItem>Fincas</MenuItem></Link></li>
                         </ul>
                     </div>
                 </div>

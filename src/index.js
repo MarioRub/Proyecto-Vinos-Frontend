@@ -17,6 +17,7 @@ import {
 
 import registerServiceWorker from './registerServiceWorker';
 import crearNuevaFinca from './components/crearNuevaFinca';
+import Procesos from './components/Procesos'
 
 ReactDOM.render(
     <Router>
@@ -28,6 +29,7 @@ ReactDOM.render(
                 <Route path='/aboutus' component={aboutus} />
                 <Route path='/Fincas' component={Fincas} />
                 <Route path='/crearNuevaFinca' component={crearNuevaFinca} />
+                <Route path='/Procesos' component={Procesos} />
 
                 <Route component={NotFound} />
             </Switch>

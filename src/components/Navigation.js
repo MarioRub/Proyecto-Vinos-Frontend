@@ -18,6 +18,7 @@ class Navigation extends Component {
                         <ul>
                             <li><Link to="/"><MenuItem>Inicio</MenuItem></Link></li>
                             <li><Link to="/Fincas"><MenuItem>Fincas</MenuItem></Link></li>
+                            <li><Link to="/Procesos"><MenuItem>Procesos</MenuItem></Link></li>
                         </ul>
                     </div>
                 </div>

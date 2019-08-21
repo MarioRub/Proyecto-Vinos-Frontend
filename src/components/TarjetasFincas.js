@@ -84,10 +84,7 @@ class TarjetasFincas extends React.Component {
             {items.map(item=>(                              
               <Card className={classes.card} key={item.id} >
                 <CardHeader bordered style ={{backgroundColor: '#3f51b5'} }
-                action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon/>
-                  </IconButton>}
+                
             
                 titleTypographyProps={{variant:'h5'}}
                 title={item.nombre} 
@@ -125,7 +122,7 @@ class TarjetasFincas extends React.Component {
                   </Button>
                 </CardActions>
                </Card>
-            ))};
+            ))}
         </div>
       );
     }

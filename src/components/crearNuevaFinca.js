@@ -14,7 +14,7 @@ const PostApi = ({nombre_finca,descripcion_finca,departamento_finca,municipio_fi
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
+    body: JSON.stringify({  
       nombre: nombre_finca,
       descripcion: descripcion_finca,
       departamento: departamento_finca,

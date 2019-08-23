@@ -7,12 +7,13 @@ import Button from '@material-ui/core/Button';
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
 
+const Api = "https://localhost:44319/api/finca/";
 
 
 
 
 
-class crearNuevaFinca extends Component {
+class editarFinca extends Component {
   
   constructor(props){
     super(props);
@@ -21,13 +22,33 @@ class crearNuevaFinca extends Component {
       nombre:null,
       municipio:null,
       departamento:null,
-      descripcion:null
+      descripcion:null,
+      items:[],
+      isLoaded: false,
+      
     };
 this.updateInputnombre = this.updateInputnombre.bind(this);
 this.updateInputmunicipio = this.updateInputmunicipio.bind(this);
 this.updateInputdepartamento = this.updateInputdepartamento.bind(this);
 this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
   };
+
+
+  componentDidMount() { 
+    
+      fetch('https://localhost:44319/api/finca/9')
+      .then(res => res.json())
+      .then(json => {
+        console.log(json);
+        this.setState({
+          isLoaded:true,
+          items: json,
+        })
+      });
+    
+  
+  }
+
 
     
     render() {
@@ -36,9 +57,14 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
       const {departamento}= this.state;
       const {descripcion}= this.state;
       const estado ="Creado";
+
+      var  {isLoaded,items} = this.state;
+      
+      
+
         return (
           
-
+            
             <div className="container">
                <div>{this.state.error}</div>
                <Navigation/>
@@ -46,23 +72,31 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
                   <br/>
                   <h2>Ingrese Informacion de la Finca:</h2></div>
                 
-           <form>
+           <form >
                <TextField
                     name="nombre"
                     label="Nombre"
                     margin="normal"
                     variant="outlined" 
+                    value={items.nombre}
                     onChange={this.updateInputnombre}
+                    InputLabelProps={{
+                      shrink: true,
+                      readOnly: false,
+                    }}
                     
-                    //validators={["required"]}
-                    //errorMessages={["El Campo es requerido"]}
+                    
                  />
                 <TextField
                     name="municipio"
                     label="Municipio"
                     margin="normal"
                     variant="outlined"  
+                    defaultValue=""
                     onChange={this.updateInputmunicipio}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                     style={{ marginLeft: 10 }}
                  />
                  <TextField
@@ -70,7 +104,11 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
                     label="Departamento"
                     margin="normal"
                     variant="outlined"  
+                    value={items.departamento}
                     onChange={this.updateInputdepartamento}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                     style={{ marginLeft: 10 }}
                  />
                 <br/>
@@ -78,8 +116,12 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
                     name="descripcion"
                     label="Descripcion"
                     margin="normal"
-                    variant="outlined"  
+                    variant="outlined" 
+                    defaultValue= {items.descripcion}
                     onChange={this.updateInputdescripcion}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                      fullWidth
                  />
                  
@@ -88,7 +130,6 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
 
                 <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>PostApi(nombre,descripcion,departamento,municipio)} >
                  Guardar
-                 
                 </Button>
 
                 <Link to="/Fincas">
@@ -132,7 +173,7 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
 }
 
 const PostApi = (nombre,descripcion,departamento,municipio) => (
-  
+
   fetch('https://localhost:44319/api/finca', {
     method: 'POST',
     headers: {
@@ -147,8 +188,6 @@ const PostApi = (nombre,descripcion,departamento,municipio) => (
       estado: "Creado",
     })
   }) 
-  
-  
 )
 
-export default crearNuevaFinca;
+export default editarFinca;

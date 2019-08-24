@@ -18,6 +18,7 @@ class editarFinca extends Component {
   constructor(props){
     super(props);
 
+    
     this.state = {
       nombre:null,
       municipio:null,
@@ -25,8 +26,12 @@ class editarFinca extends Component {
       descripcion:null,
       items:[],
       isLoaded: false,
+      id:null,
       
     };
+
+    
+
 this.updateInputnombre = this.updateInputnombre.bind(this);
 this.updateInputmunicipio = this.updateInputmunicipio.bind(this);
 this.updateInputdepartamento = this.updateInputdepartamento.bind(this);
@@ -36,15 +41,21 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
 
   componentDidMount() { 
     
-      fetch('https://localhost:44319/api/finca/9')
-      .then(res => res.json())
-      .then(json => {
-        console.log(json);
-        this.setState({
-          isLoaded:true,
-          items: json,
-        })
-      });
+    const {idFinca} = this.props.location.state;
+    this.setState({
+      id:idFinca,
+      nombre:this.state.items.nombre,
+    })
+    console.log("El Id de la Finca es:" + idFinca);
+    fetch(`${Api}${idFinca}`)
+    .then(res => res.json())
+    .then(json => {
+      console.log(json);
+      this.setState({
+        isLoaded:true,
+        items: json,
+      })
+    });
     
   
   }
@@ -52,11 +63,16 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
 
     
     render() {
+         
       const {nombre}= this.state;
       const {municipio}= this.state;
       const {departamento}= this.state;
       const {descripcion}= this.state;
       const estado ="Creado";
+      const {id}= this.state;
+      console.log(id);
+      
+      
 
       var  {isLoaded,items} = this.state;
       
@@ -70,41 +86,41 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
                <Navigation/>
                 <div>
                   <br/>
-                  <h2>Ingrese Informacion de la Finca:</h2></div>
+                  <h2>Ingrese Informacion a Editar de la Finca:</h2></div>
                 
            <form >
-               <TextField
+             
+               <input
                     name="nombre"
                     label="Nombre"
                     margin="normal"
                     variant="outlined" 
-                    value={items.nombre}
+                    defaultValue={this.state.items.nombre}
                     onChange={this.updateInputnombre}
                     InputLabelProps={{
                       shrink: true,
-                      readOnly: false,
                     }}
                     
                     
                  />
-                <TextField
+                <input
                     name="municipio"
                     label="Municipio"
                     margin="normal"
                     variant="outlined"  
-                    defaultValue=""
+                    defaultValue={this.state.items.municipio}
                     onChange={this.updateInputmunicipio}
                     InputLabelProps={{
                       shrink: true,
                     }}
                     style={{ marginLeft: 10 }}
                  />
-                 <TextField
+                 <input
                     name="departamento"
                     label="Departamento"
                     margin="normal"
                     variant="outlined"  
-                    value={items.departamento}
+                    defaultValue={this.state.items.departamento}
                     onChange={this.updateInputdepartamento}
                     InputLabelProps={{
                       shrink: true,
@@ -112,12 +128,12 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
                     style={{ marginLeft: 10 }}
                  />
                 <br/>
-                <TextField
+                <input
                     name="descripcion"
                     label="Descripcion"
                     margin="normal"
                     variant="outlined" 
-                    defaultValue= {items.descripcion}
+                    defaultValue= {this.state.items.descripcion}
                     onChange={this.updateInputdescripcion}
                     InputLabelProps={{
                       shrink: true,
@@ -128,7 +144,7 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
                  <div style={{ marginTop: 20 }} >
                 
 
-                <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>PostApi(nombre,descripcion,departamento,municipio)} >
+                <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>PostApi(nombre,descripcion,departamento,municipio,id)} >
                  Guardar
                 </Button>
 
@@ -139,8 +155,6 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
                 </Link>
                 </div>
           </form>
-
-
 
                 <Footer/>
             </div>
@@ -172,15 +186,18 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
 
 }
 
-const PostApi = (nombre,descripcion,departamento,municipio) => (
-
-  fetch('https://localhost:44319/api/finca', {
-    method: 'POST',
+const PostApi = (nombre,descripcion,departamento,municipio,id) => {
+  
+  
+  
+  fetch(`${Api}${id}`, {
+    method: 'PUT',
     headers: {
-      'Accept': 'application/json',
+      
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({  
+      idFinca:id,
       nombre: nombre,
       descripcion: descripcion,
       departamento: departamento,
@@ -188,6 +205,8 @@ const PostApi = (nombre,descripcion,departamento,municipio) => (
       estado: "Creado",
     })
   }) 
-)
+  
+
+}
 
 export default editarFinca;

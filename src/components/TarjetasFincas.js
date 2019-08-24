@@ -132,7 +132,7 @@ class TarjetasFincas extends React.Component {
                   </Typography>
                </CardContent>
                 <CardActions>
-                <Link to="/editarFinca">
+                <Link to={{pathname: "/editarFinca", state:{idFinca: item.idFinca}}}>
                 <IconButton>
                     <EditIcon  iconClassName="material-icons" tooltip="Ligature"/>
                   </IconButton>

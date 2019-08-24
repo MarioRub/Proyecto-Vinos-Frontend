@@ -18,45 +18,46 @@ class editarFinca extends Component {
   constructor(props){
     super(props);
 
-    
+    const {idFinca} = this.props.location.state;
+    const {nombre} = this.props.location.state;
+    const {departamento}  = this.props.location.state;
+    const {municipio} = this.props.location.state;
+    const {descripcion} = this.props.location.state;
+
     this.state = {
-      nombre:null,
-      municipio:null,
-      departamento:null,
-      descripcion:null,
+      nombre:nombre,
+      municipio:municipio,
+      departamento:departamento,
+      descripcion:descripcion,
       items:[],
       isLoaded: false,
-      id:null,
+      id:idFinca,
       
     };
 
-    
-
-this.updateInputnombre = this.updateInputnombre.bind(this);
-this.updateInputmunicipio = this.updateInputmunicipio.bind(this);
-this.updateInputdepartamento = this.updateInputdepartamento.bind(this);
-this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
+  this.updateInputnombre = this.updateInputnombre.bind(this);
+  this.updateInputmunicipio = this.updateInputmunicipio.bind(this);
+  this.updateInputdepartamento = this.updateInputdepartamento.bind(this);
+  this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
   };
 
 
-  componentDidMount() { 
+  componentWillMount() { 
     
     const {idFinca} = this.props.location.state;
-    this.setState({
-      id:idFinca,
-      nombre:this.state.items.nombre,
-    })
-    console.log("El Id de la Finca es:" + idFinca);
+    
+    
+    
     fetch(`${Api}${idFinca}`)
     .then(res => res.json())
     .then(json => {
-      console.log(json);
       this.setState({
         isLoaded:true,
         items: json,
       })
     });
-    
+   
+
   
   }
 
@@ -64,13 +65,17 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
     
     render() {
          
+      
       const {nombre}= this.state;
       const {municipio}= this.state;
       const {departamento}= this.state;
       const {descripcion}= this.state;
-      const estado ="Creado";
+     
+
+      
+      
       const {id}= this.state;
-      console.log(id);
+      
       
       
 
@@ -92,6 +97,7 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
              
                <input
                     name="nombre"
+                    ref="nombre"
                     label="Nombre"
                     margin="normal"
                     variant="outlined" 
@@ -105,6 +111,7 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
                  />
                 <input
                     name="municipio"
+                    ref="municipio"
                     label="Municipio"
                     margin="normal"
                     variant="outlined"  
@@ -117,6 +124,7 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
                  />
                  <input
                     name="departamento"
+                    ref="departamento"
                     label="Departamento"
                     margin="normal"
                     variant="outlined"  
@@ -130,6 +138,7 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
                 <br/>
                 <input
                     name="descripcion"
+                    ref="descripcion"
                     label="Descripcion"
                     margin="normal"
                     variant="outlined" 
@@ -143,11 +152,12 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
                  
                  <div style={{ marginTop: 20 }} >
                 
-
-                <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>PostApi(nombre,descripcion,departamento,municipio,id)} >
+                 <Link to="/Fincas">
+                <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>this.PostApi(nombre,descripcion,departamento,municipio)} >
                  Guardar
                 </Button>
-
+                </Link>
+                
                 <Link to="/Fincas">
                 <Button variant="contained" color="secondary"    style={{ marginLeft: 10 }}>
                  Cancelar
@@ -182,29 +192,39 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
           this.setState({descripcion : event.target.value})
          
           }
+       
           
+
+
+
+      PostApi = (nombre,descripcion,departamento,municipio) => {
+        const {id} = this.state;
+        
+  
+
+            fetch(`${Api}${id}`, {
+              method: 'PUT',
+              headers: {
+                
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({  
+                idFinca:id,
+                nombre: nombre,
+                descripcion: descripcion,
+                departamento: departamento,
+                municipio: municipio,
+                estado: "Creado",
+              })
+            })
 
 }
 
-const PostApi = (nombre,descripcion,departamento,municipio,id) => {
+
+
+
   
   
-  
-  fetch(`${Api}${id}`, {
-    method: 'PUT',
-    headers: {
-      
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({  
-      idFinca:id,
-      nombre: nombre,
-      descripcion: descripcion,
-      departamento: departamento,
-      municipio: municipio,
-      estado: "Creado",
-    })
-  }) 
   
 
 }

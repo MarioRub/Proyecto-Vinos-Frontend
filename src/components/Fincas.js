@@ -12,7 +12,10 @@ import Fab from '@material-ui/core/Fab';
 
 
 
-
+const reload = () => {
+    window.location.reload(true);
+  }
+  
 
 
 
@@ -41,9 +44,10 @@ class Fincas extends Component {
     
     render() {
         
-
+        
 
         return (
+            
             <div className="container">
                <Navigation/>
                 <div>

@@ -18,6 +18,9 @@ import {
 import registerServiceWorker from './registerServiceWorker';
 import crearNuevaFinca from './components/crearNuevaFinca';
 import Procesos from './components/Procesos'
+import LLamadas from './components/LLamadas';
+import Evaluaciones from './components/Evaluaciones';
+import Inspecciones from './components/Inspecciones';
 
 ReactDOM.render(
     <Router>
@@ -30,7 +33,9 @@ ReactDOM.render(
                 <Route path='/Fincas' component={Fincas} />
                 <Route path='/crearNuevaFinca' component={crearNuevaFinca} />
                 <Route path='/Procesos' component={Procesos} />
-
+                <Route path='/LLamadas/:idProceso' component={LLamadas} />
+                <Route path='/Evaluaciones/:idProceso' component={Evaluaciones} />
+                <Route path='/Inspecciones/:idProceso' component={Inspecciones} />
                 <Route component={NotFound} />
             </Switch>
         </div>

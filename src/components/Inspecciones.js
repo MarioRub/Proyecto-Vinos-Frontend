@@ -11,18 +11,23 @@ import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import TarjetasProcesos from './TarjetasProcesos';
 import TarjetasLLamadas from './TarjetasLLamadas';
+import CrearLLamada from './crearLLamada';
+import PostForm from './PostForm';
+import TarjetasEvaluaciones from './TarjetasEvaluaciones';
+import PostEvaluacion from './PostEvaluacion';
+import TarjetasInspecciones from './TarjetasInspecciones';
+import PostInspeccion from './PostInspeccion';
 
 
 
 
 
-class Procesos extends Component {
+
+
+class Inspecciones extends Component {
     
 
-    onCollectionUpdate = () => {
-       
-
-    }
+   
 
     componentDidMount() {
        
@@ -36,17 +41,17 @@ class Procesos extends Component {
         return (
             <div className="container">
                <Navigation/>
-                <div>
-                    <br/>
-
-
-                 </div>
+                
                 <div className="row">
-                    <div className="col-md-10"> 
-                 
-                  <TarjetasProcesos/>
+                
+                    <div className="col-md-3"> 
                        
+                    <PostInspeccion id={this.props.match.params.idProceso}/>          
                     </div>
+                    <div className="col-md-9"> 
+                       
+                       <TarjetasInspecciones id={this.props.match.params.idProceso}/>                     
+                  </div>
                 </div>
 
                 <Footer />
@@ -55,4 +60,4 @@ class Procesos extends Component {
     }
 }
 
-export default Procesos;
+export default Inspecciones;

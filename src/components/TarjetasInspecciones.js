@@ -26,6 +26,15 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Link } from 'react-router-dom';
 
 
+const Api = "https://localhost:44319/api/fincainspeccion/";
+
+
+
+const DeleteApi =(idInspeccion) => {
+  fetch(Api+idInspeccion, {
+      method: 'DELETE'
+		})
+}
 
 
 
@@ -60,7 +69,7 @@ const styles = theme => ({
   },
 });
 
-class TarjetasProcesos extends React.Component {
+class TarjetasInspecciones extends React.Component {
   state = { expanded: false,
 
   }
@@ -79,7 +88,7 @@ class TarjetasProcesos extends React.Component {
 
 
   componentDidMount(){
-    fetch('https://localhost:44319/api/fincaproceso')
+    fetch('https://localhost:44319/api/fincainspeccion/'+this.props.id)
     .then(res=>res.json())
     .then(json=>{
       this.setState({
@@ -111,7 +120,7 @@ class TarjetasProcesos extends React.Component {
                 <CardHeader
                   avatar={
                     <Avatar aria-label="Recipe" className={classes.avatar}>
-                      {this.state.contador+1}
+                      {item.idInspeccion}
                     </Avatar>
                   }
                   action={
@@ -120,40 +129,22 @@ class TarjetasProcesos extends React.Component {
                     </IconButton>
                   }
                   
-                  subheader={item.nombre}
+                  subheader={"Inspecciones"}
                 />
                 <CardMedia
                   className={classes.media}
-                  image={"https://images.vexels.com/media/users/3/150252/raw/d5966833ace9d0da42dc27441817bb9c-ilustracion-de-dibujos-animados-de-finca-de-vinedo.jpg"}
-                  title="Paella dish"
+                  image={"http://www.cronicas.com.uy/wp-content/uploads/2018/08/cedu.jpg"}
+                  title="LLamada"
                 />
                 <CardContent>
                   <Typography component="p">
 
-                  <strong> Inicio:</strong> {item.fechaInicio}  
-                  <strong> Producto:</strong> {item.productos.nombre}  
-                  </Typography>
-                  <Typography component="p">
-                <strong> Semilla:</strong> {item.productos.semilla.nombre} 
-                </Typography>
-                <Typography component="p">
-                <strong> Estado:</strong> {item.estado}  
-                </Typography>
-                </CardContent>
-                <CardActions className={classes.actions} disableActionSpacing>
-                  <IconButton aria-label="Registrar LLamada">
-                  <Link to={`/llamadas/${item.idProceso}`} ><CallIcon/></Link>&nbsp; 
-                  </IconButton>
-                  <IconButton aria-label="Evaluar" >
-                  <Link to={`/evaluaciones/${item.idProceso}`} ><CollectionsBookmarkIcon /></Link>&nbsp; 
-               
-                  </IconButton>
-                  <IconButton aria-label="Inspeccionar">
-                  <Link to={`/inspecciones/${item.idProceso}`} ><AssignmentIcon /></Link>&nbsp; 
-               
-             
-                  </IconButton>
+                  <p> <strong> Fecha Visita:</strong> {item.fechaVisita} </p>
+                  <p> <strong> Fecha Compra</strong> {item.fechaCompra}  </p>
                 
+                  </Typography>
+                </CardContent>
+                <CardActions className={classes.actions} disableActionSpacing>                
                   <IconButton
                     className={classnames(classes.expand, {
                       [classes.expandOpen]: this.state.expanded,
@@ -167,25 +158,12 @@ class TarjetasProcesos extends React.Component {
                 </CardActions>
                 <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                   <CardContent>
-                    <Typography paragraph><strong>Detalles de la finca</strong></Typography>
+                    <Typography paragraph><strong>Observaciones</strong></Typography>
                     <Typography paragraph>
-                    <ul >
-                     <li>
-                     <strong>Finca:</strong> {item.finca.nombre}
-                     </li>
-                     <li>
-                     <strong>Departamento:</strong> {item.finca.departamento}
-
-                     </li>
-                     <li>
-                     <strong>Municipio:</strong> {item.finca.municipio}
-                     </li>
-                     </ul>
+                   
+                    <p> <strong> Observacion:</strong> {item.observacion}  </p>
                     </Typography>
-                    <IconButton aria-label="Editar" >
-                    <EditIcon/>
-                  </IconButton>
-                  <IconButton aria-label="Eliminar" >
+                    <IconButton aria-label="Eliminar" onClick={()=>DeleteApi(item.idInspeccion)} >
                   <  DeleteForeverIcon />
                   </IconButton>
                   </CardContent>
@@ -200,4 +178,4 @@ class TarjetasProcesos extends React.Component {
 }
 }
 
-export default withStyles(styles)(TarjetasProcesos);
+export default withStyles(styles)(TarjetasInspecciones);

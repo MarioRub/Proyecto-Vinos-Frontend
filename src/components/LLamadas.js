@@ -11,12 +11,16 @@ import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import TarjetasProcesos from './TarjetasProcesos';
 import TarjetasLLamadas from './TarjetasLLamadas';
+import CrearLLamada from './crearLLamada';
+import PostForm from './PostForm';
 
 
 
 
 
-class Procesos extends Component {
+
+
+class LLamadas extends Component {
     
 
     onCollectionUpdate = () => {
@@ -36,17 +40,17 @@ class Procesos extends Component {
         return (
             <div className="container">
                <Navigation/>
-                <div>
-                    <br/>
-
-
-                 </div>
+                
                 <div className="row">
-                    <div className="col-md-10"> 
-                 
-                  <TarjetasProcesos/>
+                
+                    <div className="col-md-3"> 
                        
+                    <PostForm id={this.props.match.params.idProceso}/>          
                     </div>
+                    <div className="col-md-9"> 
+                       
+                       <TarjetasLLamadas id={this.props.match.params.idProceso}/>                     
+                  </div>
                 </div>
 
                 <Footer />
@@ -55,4 +59,4 @@ class Procesos extends Component {
     }
 }
 
-export default Procesos;
+export default LLamadas;

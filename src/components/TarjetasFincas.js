@@ -14,6 +14,23 @@ import Button from '@material-ui/core/Button';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import EditIcon from '@material-ui/icons/Edit';
+import { Link } from 'react-router-dom';
+
+const Api = "https://localhost:44319/api/finca/";
+
+const reload = () => {
+  window.location.reload(true);
+}
+
+const DeleteApi =(idFinca) => {
+  fetch(`${Api}${idFinca}`, {
+			method: 'DELETE'
+		});
+reload();
+}
+
 
 const styles = theme => ({
   title: {
@@ -84,8 +101,6 @@ class TarjetasFincas extends React.Component {
             {items.map(item=>(                              
               <Card className={classes.card} key={item.id} >
                 <CardHeader bordered style ={{backgroundColor: '#3f51b5'} }
-                
-            
                 titleTypographyProps={{variant:'h5'}}
                 title={item.nombre} 
                  avatar={
@@ -117,9 +132,14 @@ class TarjetasFincas extends React.Component {
                   </Typography>
                </CardContent>
                 <CardActions>
-                  <Button className={classes.root} size="small" color="primary">
-                      Ver Proceso Actual
-                  </Button>
+                <Link to={{pathname: "/editarFinca", state:{idFinca: item.idFinca,nombre:item.nombre,departamento:item.departamento,descripcion:item.descripcion,municipio:item.municipio}}}>
+                <IconButton>
+                    <EditIcon  iconClassName="material-icons" tooltip="Ligature"/>
+                  </IconButton>
+                  </Link>
+                <IconButton aria-label="Eliminar" onClick={()=>DeleteApi(item.idFinca)} >
+                  <  DeleteForeverIcon />
+                  </IconButton>
                 </CardActions>
                </Card>
             ))}

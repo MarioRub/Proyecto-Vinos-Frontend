@@ -4,10 +4,134 @@ import Footer from "./footer";
 import Navigation from "./Navigation";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
 
-const PostApi = ({nombre_finca,descripcion_finca,departamento_finca,municipio_finca,estado_finca}) => (
 
+
+
+
+
+class crearNuevaFinca extends Component {
+  
+  constructor(props){
+    super(props);
+
+    this.state = {
+      nombre:null,
+      municipio:null,
+      departamento:null,
+      descripcion:null
+    };
+this.updateInputnombre = this.updateInputnombre.bind(this);
+this.updateInputmunicipio = this.updateInputmunicipio.bind(this);
+this.updateInputdepartamento = this.updateInputdepartamento.bind(this);
+this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
+  };
+
+    
+    render() {
+      const {nombre}= this.state;
+      const {municipio}= this.state;
+      const {departamento}= this.state;
+      const {descripcion}= this.state;
+      const estado ="Creado";
+        return (
+          
+
+            <div className="container">
+               <div>{this.state.error}</div>
+               <Navigation/>
+                <div>
+                  <br/>
+                  <h2>Ingrese Informacion de la Finca:</h2></div>
+                
+           <form>
+               <TextField
+                    name="nombre"
+                    label="Nombre"
+                    margin="normal"
+                    variant="outlined" 
+                    onChange={this.updateInputnombre}
+                    
+                    //validators={["required"]}
+                    //errorMessages={["El Campo es requerido"]}
+                 />
+                <TextField
+                    name="municipio"
+                    label="Municipio"
+                    margin="normal"
+                    variant="outlined"  
+                    onChange={this.updateInputmunicipio}
+                    style={{ marginLeft: 10 }}
+                 />
+                 <TextField
+                    name="departamento"
+                    label="Departamento"
+                    margin="normal"
+                    variant="outlined"  
+                    onChange={this.updateInputdepartamento}
+                    style={{ marginLeft: 10 }}
+                 />
+                <br/>
+                <TextField
+                    name="descripcion"
+                    label="Descripcion"
+                    margin="normal"
+                    variant="outlined"  
+                    onChange={this.updateInputdescripcion}
+                     fullWidth
+                 />
+                 
+                 <div style={{ marginTop: 20 }} >
+                
+                 <Link to="/Fincas">
+                <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>PostApi(nombre,descripcion,departamento,municipio)} >
+                 Guardar
+                </Button>
+                </Link>
+                <Link to="/Fincas">
+                <Button variant="contained" color="secondary"    style={{ marginLeft: 10 }}>
+                 Cancelar
+                </Button>
+                </Link>
+                </div>
+          </form>
+
+
+
+                <Footer/>
+            </div>
+        );
+    }
+
+
+
+  updateInputnombre(event){
+    this.setState({nombre : event.target.value})
+    
+    }
+
+    updateInputmunicipio(event){
+      this.setState({municipio : event.target.value})
+      
+      }
+
+      updateInputdepartamento(event){
+        this.setState({departamento : event.target.value})
+        
+        }
+
+        updateInputdescripcion(event){
+          this.setState({descripcion : event.target.value})
+         
+          }
+          
+
+}
+
+const PostApi = (nombre,descripcion,departamento,municipio) => (
+  
   fetch('https://localhost:44319/api/finca', {
     method: 'POST',
     headers: {
@@ -15,93 +139,15 @@ const PostApi = ({nombre_finca,descripcion_finca,departamento_finca,municipio_fi
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({  
-      nombre: nombre_finca,
-      descripcion: descripcion_finca,
-      departamento: departamento_finca,
-      municipio: municipio_finca,
-      estado: estado_finca
+      nombre: nombre,
+      descripcion: descripcion,
+      departamento: departamento,
+      municipio: municipio,
+      estado: "Creado",
     })
   }) 
+  
+  
 )
-
-function handleDelete() {
-  alert('You clicked the delete icon.');
-}
-
-
-
-class crearNuevaFinca extends Component {
-    
-    render() {
-
-        return (
-
-            <div className="container">
-               
-               <Navigation/>
-                <div>
-                  <br/>
-                  <h2>Ingrese Informacion de la Finca:</h2></div>
-                
-                  
-               <TextField
-                    id="outlinedn ombre"
-                    label="Nombre"
-                    defaultValue=""
-                    margin="normal"
-                    variant="outlined" 
-                 />
-                <TextField
-                    id="outlinedmunicipio"
-                    label="Municipio"
-                    defaultValue="" 
-                    margin="normal"
-                    variant="outlined"  
-                    style={{ marginLeft: 10 }}
-                 />
-                 <TextField
-                    id="outlineddepartamento"
-                    label="Departamento"
-                    defaultValue="" 
-                    margin="normal"
-                    variant="outlined"  
-                    style={{ marginLeft: 10 }}
-                 />
-                <br/>
-                <TextField
-                    id="outlineddescripcion"
-                    label="Descripcion"
-                    defaultValue="" 
-                    margin="normal"
-                    variant="outlined"  
-                     fullWidth
-                 />
-                 
-                 <div style={{ marginTop: 20 }} >
-                
-
-                <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={handleDelete} >
-                 Guardar
-                 
-                </Button>
-
-                <Link to="/Fincas">
-                <Button variant="contained" color="secondary"    style={{ marginLeft: 10 }}>
-                 Cancelar
-                </Button>
-                </Link>
-                </div>
-                
-                <Footer/>
-
-
-              
-               
-
-
-            </div>
-        );
-    }
-}
 
 export default crearNuevaFinca;

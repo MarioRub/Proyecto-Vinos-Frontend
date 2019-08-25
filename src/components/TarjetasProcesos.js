@@ -182,8 +182,9 @@ class TarjetasProcesos extends React.Component {
                      </li>
                      </ul>
                     </Typography>
-                    <IconButton aria-label="Editar" >
-                    <EditIcon/>
+                    <IconButton 
+                         >
+                    <EditIcon  iconClassName="material-icons" tooltip="Ligature"/>
                   </IconButton>
                   <IconButton aria-label="Eliminar" >
                   <  DeleteForeverIcon />

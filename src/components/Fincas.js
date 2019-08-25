@@ -12,6 +12,10 @@ import Fab from '@material-ui/core/Fab';
 
 
 
+const reload = () => {
+    window.location.reload(true);
+  }
+  
 
 
 
@@ -19,34 +23,20 @@ import Fab from '@material-ui/core/Fab';
 
 class Fincas extends Component {
     
-    
-    
-  
-    
-    
+
     constructor(props) {
         super(props);
-       
-    
-    }
 
     
-
-    onCollectionUpdate = () => {
-       
-
     }
+    
 
-    componentDidMount() {
-       
-
-    }
     
     render() {
         
 
-
         return (
+            
             <div className="container">
                <Navigation/>
                 <div>
@@ -61,7 +51,8 @@ class Fincas extends Component {
                 <div className="row">
 
                     <div className="col-md-10"> 
-                 
+                        
+                        
                         <TarjetasFincas />
                       
                     </div>

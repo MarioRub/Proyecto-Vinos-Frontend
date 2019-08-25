@@ -26,24 +26,13 @@ class Fincas extends Component {
 
     constructor(props) {
         super(props);
-       
-    
-    }
 
     
-
-    onCollectionUpdate = () => {
-       
-
     }
+    
 
-    componentDidMount() {
-       
-
-    }
     
     render() {
-        
         
 
         return (
@@ -62,7 +51,8 @@ class Fincas extends Component {
                 <div className="row">
 
                     <div className="col-md-10"> 
-                 
+                        
+                        
                         <TarjetasFincas />
                       
                     </div>

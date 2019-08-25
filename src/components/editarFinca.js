@@ -10,9 +10,6 @@ import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 const Api = "https://localhost:44319/api/finca/";
 
 
-
-
-
 class editarFinca extends Component {
   
   constructor(props){
@@ -156,8 +153,9 @@ class editarFinca extends Component {
                 <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>this.PostApi(nombre,descripcion,departamento,municipio)} >
                  Guardar
                 </Button>
+                 
                 </Link>
-                
+
                 <Link to="/Fincas">
                 <Button variant="contained" color="secondary"    style={{ marginLeft: 10 }}>
                  Cancelar

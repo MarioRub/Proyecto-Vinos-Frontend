@@ -85,12 +85,11 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
                  
                  <div style={{ marginTop: 20 }} >
                 
-
+                 <Link to="/Fincas">
                 <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>PostApi(nombre,descripcion,departamento,municipio)} >
                  Guardar
-                 
                 </Button>
-
+                </Link>
                 <Link to="/Fincas">
                 <Button variant="contained" color="secondary"    style={{ marginLeft: 10 }}>
                  Cancelar

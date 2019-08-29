@@ -21,8 +21,9 @@ import Procesos from './components/Procesos'
 import LLamadas from './components/LLamadas';
 import Evaluaciones from './components/Evaluaciones';
 import Inspecciones from './components/Inspecciones';
-import Procesos from './components/Procesos';
 import editarFinca from './components/editarFinca';
+import Compras from './components/Compras';
+import MostrarCompras from './components/MostrarCompras';
 
 
 ReactDOM.render(
@@ -36,9 +37,11 @@ ReactDOM.render(
                 <Route path='/Fincas' component={Fincas} />
                 <Route path='/crearNuevaFinca' component={crearNuevaFinca} />
                 <Route path='/Procesos' component={Procesos} />
+                <Route path='/Compras' component={Compras} />
                 <Route path='/LLamadas/:idProceso' component={LLamadas} />
                 <Route path='/Evaluaciones/:idProceso' component={Evaluaciones} />
                 <Route path='/Inspecciones/:idProceso' component={Inspecciones} />
+                <Route path='/MostrarCompras/:idProceso' component={MostrarCompras} />
                 <Route path='/editarFinca' component={editarFinca} />
                 <Route component={NotFound} />
             </Switch>

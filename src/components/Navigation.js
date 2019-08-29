@@ -8,17 +8,18 @@ class Navigation extends Component {
 
             <nav className="navbar navbar-dark bg-light ">
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-4">
                         <ul>
-                            <a class="navbar-brand" href="#" />
-                            <img src="http://developer.hondumall.net/static/files/logo.png" width="45" height="45" class="d-inline-block align-top" alt="" />
+                            <a class="navbar-brand"><Link to="/"></Link></a>
+                            <img src="http://alimentosmadeinaragon.com/wp-content/uploads/2015/09/logo-vinos-covinca.png" width="45" height="45" class="d-inline-block align-top" alt="" />
                         </ul>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-8">
                         <ul>
                             <li><Link to="/"><MenuItem>Inicio</MenuItem></Link></li>
-                            <li><Link to="/Fincas"><MenuItem>Fincas</MenuItem></Link></li>
-                            <li><Link to="/Procesos"><MenuItem>Procesos</MenuItem></Link></li>
+                            <li><Link to="/Fincas"><MenuItem>Finca</MenuItem></Link></li>
+                            <li><Link to="/Procesos"><MenuItem>Proceso</MenuItem></Link></li>
+                            <li><Link to="/Compras"><MenuItem>Compra</MenuItem></Link></li>
                         </ul>
                     </div>
                 </div>

@@ -4,6 +4,10 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 
+const reload = () => {
+	window.location.reload(true);
+  }
+
 class PostEvaluacion extends Component {
 	constructor(props) {
 		super(props)
@@ -16,7 +20,7 @@ class PostEvaluacion extends Component {
             fechaInspeccion:''
 		}
 
-		console.log(this.state.idProceso)
+		
 	}
 
 	changeHandler = e => {
@@ -25,11 +29,12 @@ class PostEvaluacion extends Component {
 
 	submitHandler = e => {
 		e.preventDefault()
-		console.log(this.state)
+		
 		axios
 			.post('https://localhost:44319/api/fincaevaluacion', this.state)
 			.then(response => {
 				alert("Exito al Guardar los datos!!!")
+				reload();
 			})
 			.catch(error => {
 				alert("ERROR AL GUARDAR LOS DATOS")
@@ -60,7 +65,11 @@ class PostEvaluacion extends Component {
                             onChange={this.changeHandler}
                             label="Comentario"
                             margin="normal"
-                            variant="outlined" 
+							variant="outlined"
+							InputLabelProps={{
+								shrink: true,
+							  }} 
+							
 						/>
 				
 						<TextField
@@ -70,7 +79,10 @@ class PostEvaluacion extends Component {
                             onChange={this.changeHandler}                        
                             label="Fecha Visita"
                             margin="normal"
-                            variant="outlined" 
+							variant="outlined" 
+							InputLabelProps={{
+								shrink: true,
+							  }}
 						/>
 					
                     <TextField
@@ -80,7 +92,10 @@ class PostEvaluacion extends Component {
                             onChange={this.changeHandler}
                             label="Valoracion Terreno"
                             margin="normal"
-                            variant="outlined" 
+							variant="outlined" 
+							InputLabelProps={{
+								shrink: true,
+							  }}
 						/>
 					
                     <TextField
@@ -89,7 +104,10 @@ class PostEvaluacion extends Component {
 							value={fechaInspeccion}
                             onChange={this.changeHandler}
                             label="Fecha Inspeccion"
-                            margin="normal"
+							margin="normal"
+							InputLabelProps={{
+								shrink: true,
+							  }}
                             
 						/>
 				   <div style={{ marginTop: 20 }} ></div>
@@ -109,4 +127,4 @@ class PostEvaluacion extends Component {
 	}
 }
 
-export default PostEvaluacion
+export default PostEvaluacion;

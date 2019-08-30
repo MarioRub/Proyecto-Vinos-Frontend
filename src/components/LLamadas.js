@@ -38,13 +38,13 @@ class LLamadas extends Component {
 
 
         return (
-            <div className="container">
+            <div >
                <Navigation/>
                 
                 <div className="row">
                 
                     <div className="col-md-3"> 
-                       
+                       <br/>
                     <PostForm id={this.props.match.params.idProceso}/>          
                     </div>
                     <div className="col-md-9"> 

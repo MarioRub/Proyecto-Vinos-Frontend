@@ -26,7 +26,7 @@ class Header extends Component {
           <table class="table">
             <header>
               <div className="head"  >
-                <h1 className="text-white" > <strong> Proyecto Vinos</strong>< br /></h1>
+                <h1 className="text-white" > <strong> Proyecto Vinos</strong></h1>
                 <div>
                 </div>
               </div>

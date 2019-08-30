@@ -34,11 +34,15 @@ class Procesos extends Component {
 
 
         return (
-            <div className="container">
+            <div >
                <Navigation/>
                 <div>
                     <br/>
-
+                    <Link to="/crearNuevaProceso">
+                    <Fab color="primary" aria-label="add" style={{ marginTop: 50}} style={{ marginLeft: 1800}}>
+                        <AddIcon/>
+                    </Fab>
+                    </Link>
 
                  </div>
                 <div className="row">

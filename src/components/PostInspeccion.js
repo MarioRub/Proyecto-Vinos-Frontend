@@ -4,6 +4,10 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 
+const reload = () => {
+	window.location.reload(true);
+  }
+
 class PostInspeccion extends Component {
 	constructor(props) {
 		super(props)
@@ -29,6 +33,7 @@ class PostInspeccion extends Component {
 			.post('https://localhost:44319/api/fincainspeccion', this.state)
 			.then(response => {
 				alert("Exito al Guardar los datos!!!")
+				reload();
 			})
 			.catch(error => {
 				alert("ERROR AL GUARDAR LOS DATOS")
@@ -59,7 +64,10 @@ class PostInspeccion extends Component {
                             onChange={this.changeHandler}
                             label="Comentario"
                             margin="normal"
-                            variant="outlined" 
+							variant="outlined" 
+							InputLabelProps={{
+								shrink: true,
+							  }} 
 						/>
 				
 						<TextField
@@ -69,7 +77,10 @@ class PostInspeccion extends Component {
                             onChange={this.changeHandler}                        
                             label="Fecha Visita"
                             margin="normal"
-                            variant="outlined" 
+							variant="outlined" 
+							InputLabelProps={{
+								shrink: true,
+							  }} 
 						/>
 					
                     <TextField
@@ -78,7 +89,10 @@ class PostInspeccion extends Component {
 							value={fechaCompra}
                             onChange={this.changeHandler}
                             label="Fecha Compra"
-                            margin="normal"
+							margin="normal"
+							InputLabelProps={{
+								shrink: true,
+							  }} 
                             
 						/>
 				   <div style={{ marginTop: 20 }} ></div>

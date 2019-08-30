@@ -37,12 +37,12 @@ class Fincas extends Component {
 
         return (
             
-            <div className="container">
+            <div >
                <Navigation/>
                 <div>
                     <br/>
                 <Link to="/crearNuevaFinca">
-                    <Fab color="primary" aria-label="add" style={{ marginTop: 50}} style={{ marginLeft: 1380}}>
+                    <Fab color="primary" aria-label="add" style={{ marginTop: 50}} style={{ marginLeft: 1800}}>
                         <AddIcon/>
                     </Fab>
                     </Link>

@@ -36,6 +36,7 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
       const {departamento}= this.state;
       const {descripcion}= this.state;
       const estado ="Creado";
+      console.log(nombre);
         return (
           
 

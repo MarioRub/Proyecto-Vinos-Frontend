@@ -21,8 +21,8 @@ import Procesos from './components/Procesos'
 import LLamadas from './components/LLamadas';
 import Evaluaciones from './components/Evaluaciones';
 import Inspecciones from './components/Inspecciones';
-import Procesos from './components/Procesos';
 import editarFinca from './components/editarFinca';
+import crearNuevaProceso from './components/crearNuevoProceso';
 
 
 ReactDOM.render(
@@ -40,6 +40,7 @@ ReactDOM.render(
                 <Route path='/Evaluaciones/:idProceso' component={Evaluaciones} />
                 <Route path='/Inspecciones/:idProceso' component={Inspecciones} />
                 <Route path='/editarFinca' component={editarFinca} />
+                <Route path='/crearNuevaProceso' component={crearNuevaProceso} />
                 <Route component={NotFound} />
             </Switch>
         </div>

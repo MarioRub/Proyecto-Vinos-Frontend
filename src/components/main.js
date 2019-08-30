@@ -4,9 +4,6 @@ class Main extends Component {
   render() {
     return (
       <main>
-
-
-
       </main>
     );
   }

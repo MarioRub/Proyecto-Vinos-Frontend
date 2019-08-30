@@ -6,7 +6,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
-
+const reload = () => {
+  window.location.reload(true);
+}
 const PostApi = ({nombre_finca,descripcion_finca,departamento_finca,municipio_finca,estado_finca}) => (
 
   fetch('https://localhost:44319/api/finca', {
@@ -47,10 +49,13 @@ class crearLLamada extends Component {
                   
                <TextField
                     id="outlinedn ombre"
-                    label="Nombre"
-                    defaultValue=""
+                    label="Fecha"
+                    
                     margin="normal"
                     variant="outlined" 
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                  />
                 <TextField
                     id="outlinedmunicipio"

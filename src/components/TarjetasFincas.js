@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import CircularProgress from "@material-ui/core/CircularProgress"
+import CircularProgress from "@material-ui/core/CircularProgress";
 import classnames from 'classnames';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -17,6 +17,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
+
+
 
 const Api = "https://localhost:44319/api/finca/";
 
@@ -141,6 +143,11 @@ class TarjetasFincas extends React.Component {
                   <  DeleteForeverIcon />
                   </IconButton>
                 </CardActions>
+                <CardActions>
+                <Button variant="contained" size="medium" color="primary" className={classes.margin}>
+                  Iniciar Proceso
+                  </Button>
+                  </CardActions>
                </Card>
             ))}
         </div>

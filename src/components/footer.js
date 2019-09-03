@@ -5,7 +5,7 @@ class Footer extends Component {
   render() {
     return (
      
-      <footer>
+      <footer style={{height: '100%',}}>
           <h6>Ingieneria de software<br/> Grupo Los Thanos</h6>
 
       </footer>

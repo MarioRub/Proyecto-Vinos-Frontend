@@ -26,7 +26,14 @@ class Fincas extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            uses: null,   
+        }
+       
 
+        this.setState({
+            uses:this.props.location.state,
+        })
     
     }
     
@@ -34,34 +41,43 @@ class Fincas extends Component {
     
     render() {
         
-
+        var {uses}= this.state;
+        if(uses==='true'){
+            this.reload();}
+            else{
         return (
             
-            <div >
-               <Navigation/>
-                <div>
-                    <br/>
-                <Link to="/crearNuevaFinca">
-                    <Fab color="primary" aria-label="add" style={{ marginTop: 50}} style={{ marginLeft: 1800}}>
-                        <AddIcon/>
-                    </Fab>
-                    </Link>
-
+            
+                <div >
+                <Navigation/>
+                 <div>
+                     <br/>
+                 <Link to="/crearNuevaFinca">
+                     <Fab color="primary" aria-label="add" style={{ marginTop: 50}} style={{ marginLeft: 1800}}>
+                         <AddIcon/>
+                     </Fab>
+                     </Link>
+ 
+                  </div>
+                 <div className="row">
+ 
+                     <div className="col-md-10"> 
+                         
+                         
+                         <TarjetasFincas />
+                       
+                     </div>
                  </div>
-                <div className="row">
-
-                    <div className="col-md-10"> 
-                        
-                        
-                        <TarjetasFincas />
-                      
-                    </div>
-                </div>
-
-                <Footer />
-            </div>
+ 
+                 <Footer />
+             </div>
+            
+            
+            
         );
+      }
     }
+ 
 }
 
 export default Fincas;

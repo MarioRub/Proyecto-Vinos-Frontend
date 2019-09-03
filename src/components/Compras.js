@@ -35,7 +35,7 @@ class Compras extends Component {
 
 
         return (
-            <div className="container">
+            <div>
                <Navigation/>
                 <div>
                     <br/>

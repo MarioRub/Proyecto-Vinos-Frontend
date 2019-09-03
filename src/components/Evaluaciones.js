@@ -37,7 +37,7 @@ class Evaluaciones extends Component {
 
 
         return (
-            <div className="container">
+            <div >
                <Navigation/>
                 
                 <div className="row">

@@ -21,12 +21,14 @@ class Header extends Component {
     return (
 
       <div>
+         
         <Navigation/>
         <div class="table-responsive">
           <table class="table">
             <header>
-              <div className="head"  >
-                <h1 className="text-white" > <strong> Proyecto Vinos</strong></h1>
+              
+              <div className="head" style={{backgroundColor:'white'}} >
+                
                 <div>
                 </div>
               </div>

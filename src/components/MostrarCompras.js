@@ -40,7 +40,7 @@ class MostrarCompras extends Component {
 
 
         return (
-            <div className="container">
+            <div>
                <Navigation/>
                 
                 <div className="row">

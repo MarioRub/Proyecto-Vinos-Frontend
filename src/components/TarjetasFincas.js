@@ -17,6 +17,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
+import CardMedia from '@material-ui/core/CardMedia';
+import axios from 'axios';
+
 
 
 
@@ -27,10 +30,14 @@ const reload = () => {
 }
 
 const DeleteApi =(idFinca) => {
-  fetch(`${Api}${idFinca}`, {
-			method: 'DELETE'
-		});
-reload();
+
+  axios.delete(`${Api}${idFinca}`)
+  .then(res => {
+  alert("Borrada con Exito")
+   reload(); 
+  });
+ 
+    
 }
 
 
@@ -96,40 +103,45 @@ class TarjetasFincas extends React.Component {
     const { classes } = this.props;
     var  {isLoaded,items} = this.state;
     if(!isLoaded){
-      return<div><CircularProgress size={50} /></div>
+      return<div><CircularProgress size={80} /></div>
     }else{
       return(
         <div className="row">
             {items.map(item=>(                              
               <Card className={classes.card} key={item.id} >
-                <CardHeader bordered style ={{backgroundColor: '#3f51b5'} }
+                <CardHeader
                 titleTypographyProps={{variant:'h5'}}
                 title={item.nombre} 
                  avatar={
-                    <Avatar aria-label="Finca" >
+                    <Avatar aria-label="Recipe" className={classes.avatar} >
                          {item.idFinca}
                    </Avatar>}/>
+                   <CardMedia
+                  className={classes.media}
+                  image={"https://images.vexels.com/media/users/3/150252/raw/d5966833ace9d0da42dc27441817bb9c-ilustracion-de-dibujos-animados-de-finca-de-vinedo.jpg"}
+                  title="Paella dish"
+                />
                 <CardContent>
                   <Typography component="p" color="inherit">
-                    <h5>Municipio:</h5>
+                    <strong>Municipio:</strong>
                     {item.municipio}  
                   </Typography>
                </CardContent>
                <CardContent>
                   <Typography component="p" color="inherit">
-                  <h5>Departameto:</h5>
+                  <strong>Departameto:</strong>
                     {item.departamento}  
                   </Typography>
                </CardContent>
                 <CardContent>
                   <Typography component="p" color="inherit">
-                  <h5>Descripcion:</h5>
+                  <strong>Descripcion:</strong>
                     {item.descripcion}  
                   </Typography>
                </CardContent>
                <CardContent>
                   <Typography component="p" color="inherit">
-                  <h5>Estado Actual:</h5>
+                  <strong>Estado Actual:</strong>
                     {item.estado}  
                   </Typography>
                </CardContent>
@@ -143,11 +155,7 @@ class TarjetasFincas extends React.Component {
                   <  DeleteForeverIcon />
                   </IconButton>
                 </CardActions>
-                <CardActions>
-                <Button variant="contained" size="medium" color="primary" className={classes.margin}>
-                  Iniciar Proceso
-                  </Button>
-                  </CardActions>
+                
                </Card>
             ))}
         </div>

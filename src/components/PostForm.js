@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
@@ -13,7 +13,7 @@ class PostForm extends Component {
 		super(props)
 
 		this.state = {
-			idProceso: this.props.id,
+			idProceso: this.props.id,	
 			fechaLLamada: '',
             observacion: '',
             fechaVisita:''
@@ -28,7 +28,7 @@ class PostForm extends Component {
 
 	submitHandler = e => {
 		e.preventDefault()
-		console.log(this.state)
+		
 		axios
 			.post('https://localhost:44319/api/fincallamada', this.state)
 			.then(response => {

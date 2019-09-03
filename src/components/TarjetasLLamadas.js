@@ -21,6 +21,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
 import LinkIcon from '@material-ui/icons/Launch'
 import EditIcon from '@material-ui/icons/Edit';
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Link } from 'react-router-dom';
@@ -106,7 +107,7 @@ class TarjetasLLamadas extends React.Component {
     var {isLoaded, items}=this.state;
     const { classes } = this.props;
     if(!isLoaded){
-      return<div>Is Loading....</div>;
+      return<div><CircularProgress size={80} /></div>;
     }else{
     
     return (

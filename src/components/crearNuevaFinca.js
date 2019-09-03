@@ -5,9 +5,11 @@ import Navigation from "./Navigation";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+import axios from 'axios';
 
-
-
+const reload = () => {
+	window.location.reload(true);
+  }
 
 
 
@@ -36,11 +38,17 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
       const {departamento}= this.state;
       const {descripcion}= this.state;
       const estado ="Creado";
-      console.log(nombre);
+      const fincaNueva = {
+        nombre:nombre,
+        municipio:municipio,
+        departamento:departamento,
+        descripcion:descripcion,
+      }
+      
         return (
           
 
-            <div className="container">
+            <div>
                <div>{this.state.error}</div>
                <Navigation/>
                 <div>
@@ -55,8 +63,7 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
                     variant="outlined" 
                     onChange={this.updateInputnombre}
                     
-                    //validators={["required"]}
-                    //errorMessages={["El Campo es requerido"]}
+                    
                  />
                 <TextField
                     name="municipio"
@@ -86,8 +93,8 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
                  
                  <div style={{ marginTop: 20 }} >
                 
-                 <Link to="/Fincas">
-                <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>PostApi(nombre,descripcion,departamento,municipio)} >
+                 <Link  to="/Fincas">
+                <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>PostApi(fincaNueva)} >
                  Guardar
                 </Button>
                 </Link>
@@ -131,22 +138,21 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
 
 }
 
-const PostApi = (nombre,descripcion,departamento,municipio) => (
+const PostApi = (fincaNueva) => (
+
   
-  fetch('https://localhost:44319/api/finca', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({  
-      nombre: nombre,
-      descripcion: descripcion,
-      departamento: departamento,
-      municipio: municipio,
-      estado: "Creado",
-    })
-  }) 
+
+  axios
+			.post('https://localhost:44319/api/finca',  
+       fincaNueva
+      )
+			.then(response => {
+				alert("Exito al Guardar los datos!!!")
+				
+			})
+			.catch(error => {
+				alert("ERROR AL GUARDAR LOS DATOS")
+			})
   
   
 )

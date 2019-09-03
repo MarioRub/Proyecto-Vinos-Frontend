@@ -4,7 +4,7 @@ import Footer from "./footer";
 import Navigation from "./Navigation";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+import axios from 'axios';
 
 
 const Api = "https://localhost:44319/api/finca/";
@@ -67,6 +67,14 @@ class editarFinca extends Component {
       const {municipio}= this.state;
       const {departamento}= this.state;
       const {descripcion}= this.state;
+      const {idFinca} = this.props.location.state;
+      const fincaEditada = {
+        idFinca:idFinca,
+        nombre:nombre,
+        municipio:municipio,
+        departamento:departamento,
+        descripcion:descripcion,
+      }
      
 
       
@@ -150,7 +158,7 @@ class editarFinca extends Component {
                  <div style={{ marginTop: 20 }} >
                 
                  <Link to="/Fincas">
-                <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>this.PostApi(nombre,descripcion,departamento,municipio)} >
+                <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>this.PostApi(fincaEditada)} >
                  Guardar
                 </Button>
                  
@@ -195,25 +203,20 @@ class editarFinca extends Component {
 
 
 
-      PostApi = (nombre,descripcion,departamento,municipio) => {
+      PostApi = (fincaEditada) => {
         const {id} = this.state;
         
-  
 
-            fetch(`${Api}${id}`, {
-              method: 'PUT',
-              headers: {
-                
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({  
-                idFinca:id,
-                nombre: nombre,
-                descripcion: descripcion,
-                departamento: departamento,
-                municipio: municipio,
-                estado: "Creado",
-              })
+            axios
+            .put(`${Api}${id}`,  
+             fincaEditada
+            )
+            .then(response => {
+              alert("Exito al Guardar los datos!!!")
+              
+            })
+            .catch(error => {
+              alert("ERROR AL GUARDAR LOS DATOS")
             })
 
 }

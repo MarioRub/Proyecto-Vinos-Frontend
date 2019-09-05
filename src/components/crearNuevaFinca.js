@@ -4,13 +4,7 @@ import Footer from "./footer";
 import Navigation from "./Navigation";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import axios from 'axios';
-
-const reload = () => {
-	window.location.reload(true);
-  }
-
 
 
 
@@ -20,29 +14,29 @@ class crearNuevaFinca extends Component {
     super(props);
 
     this.state = {
-      nombre:null,
-      municipio:null,
-      departamento:null,
-      descripcion:null
+        nombre:null,
+        municipio:null,
+        departamento:null,
+        descripcion:null
     };
-this.updateInputnombre = this.updateInputnombre.bind(this);
-this.updateInputmunicipio = this.updateInputmunicipio.bind(this);
-this.updateInputdepartamento = this.updateInputdepartamento.bind(this);
-this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
+
+        this.updateInputnombre = this.updateInputnombre.bind(this);
+        this.updateInputmunicipio = this.updateInputmunicipio.bind(this);
+        this.updateInputdepartamento = this.updateInputdepartamento.bind(this);
+        this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
   };
 
     
     render() {
-      const {nombre}= this.state;
-      const {municipio}= this.state;
-      const {departamento}= this.state;
-      const {descripcion}= this.state;
-      const estado ="Creado";
+      
+      
+
       const fincaNueva = {
-        nombre:nombre,
-        municipio:municipio,
-        departamento:departamento,
-        descripcion:descripcion,
+          nombre:this.state.nombre,
+          municipio:this.state.municipio,
+          departamento:this.state.departamento,
+          descripcion:this.state.descripcion,
+          estado:'creado',
       }
       
         return (
@@ -92,17 +86,16 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
                  />
                  
                  <div style={{ marginTop: 20 }} >
-                
-                 <Link  to="/Fincas">
-                <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>PostApi(fincaNueva)} >
-                 Guardar
-                </Button>
-                </Link>
-                <Link to="/Fincas">
-                <Button variant="contained" color="secondary"    style={{ marginLeft: 10 }}>
-                 Cancelar
-                </Button>
-                </Link>
+                    <Link  to="/Fincas">
+                        <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>PostApi(fincaNueva)} >
+                        Guardar
+                        </Button>
+                    </Link>
+                    <Link to="/Fincas">
+                        <Button variant="contained" color="secondary"    style={{ marginLeft: 10 }}>
+                        Cancelar
+                        </Button>
+                    </Link>
                 </div>
           </form>
 
@@ -115,25 +108,21 @@ this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
 
 
 
-  updateInputnombre(event){
-    this.setState({nombre : event.target.value})
-    
-    }
+      updateInputnombre(event){
+         this.setState({nombre : event.target.value})
+      }
 
-    updateInputmunicipio(event){
-      this.setState({municipio : event.target.value})
-      
+      updateInputmunicipio(event){
+        this.setState({municipio : event.target.value})
       }
 
       updateInputdepartamento(event){
         this.setState({departamento : event.target.value})
-        
-        }
+      }
 
-        updateInputdescripcion(event){
-          this.setState({descripcion : event.target.value})
-         
-          }
+      updateInputdescripcion(event){
+        this.setState({descripcion : event.target.value})
+      }
           
 
 }
@@ -143,9 +132,7 @@ const PostApi = (fincaNueva) => (
   
 
   axios
-			.post('https://localhost:44319/api/finca',  
-       fincaNueva
-      )
+			.post('https://localhost:44319/api/finca', fincaNueva)
 			.then(response => {
 				alert("Exito al Guardar los datos!!!")
 				

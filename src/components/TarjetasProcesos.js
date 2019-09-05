@@ -90,6 +90,19 @@ class TarjetasProcesos extends React.Component {
     });
   }
 
+  componentWillMount() {
+    fetch('https://localhost:44319/api/fincaproceso')
+    .then(res=>res.json())
+    .then(json=>{
+      console.log("Hola")
+      this.setState({
+        isLoaded:true,
+        items:json
+      })
+    });
+  
+  }
+
 
 
   handleExpandClick = () => {
@@ -111,16 +124,10 @@ class TarjetasProcesos extends React.Component {
               <Card className={classes.card}>
                 <CardHeader
                   avatar={
-                    <Avatar aria-label="Recipe"  >
+                    <Avatar aria-label="Recipe" className={classes.avatar} >
                       {this.state.contador+1}
                     </Avatar>
-                  }
-                  action={
-                    <IconButton>
-                      <MoreVertIcon  />
-                    </IconButton>
-                  }
-                  
+                  }       
                   subheader={item.nombre}
                 />
                 <CardMedia

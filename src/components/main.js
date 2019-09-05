@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
-import vinovino from './../images/vinovino.png';
+import vinoimagen from './../images/vinovino.png';
 
 
 
 
 class Main extends Component {
-  render() {
+  render() { 
     return (
       <main>
         
      
 <div>
 <div className="row"> 
-<img src={vinovino}/>
+<img src={vinoimagen}/>
 
   <div>
-  <h1 style={{marginTop:'80px',fontFamily: 'Anton',fontStyle:'sans-serif'}}>Sistema de Gestion de Vinos</h1>
-  <h3 style={{marginTop:'40px',fontFamily: 'Gentium Basic',fontStyle:'serif'}}>Es un sistema creado para la facil gestion del proceso de compra de un producto a una finca,</h3>
-  <h3 style={{marginTop:'5px',fontFamily: 'Gentium Basic',fontStyle:'serif'}}>por medio de este el usuario podra realizar el registro de todo el proceso desde llamadas, </h3>
-  <h3 style={{marginTop:'5px',fontFamily: 'Gentium Basic',fontStyle:'serif'}}>evaluacion, inspeccion y compra del producto cultivado en una finca.</h3>
+  <h1 className="titlename">Sistema de Gestion de Vinos</h1>
+  <h3 className="textnameup">Es un sistema creado para la facil gestion del proceso de compra de un producto a una finca,</h3>
+  <h3 className="textname">por medio de este el usuario podra realizar el registro de todo el proceso desde llamadas, </h3>
+  <h3 className="textname">evaluacion, inspeccion y compra del producto cultivado en una finca.</h3>
   </div>
 </div>
-<h1 style={{textAlign:'center',marginTop:'80px', fontFamily: 'Great Vibes',fontSize:'30px'}}>___________________________________________________________________________</h1>
+<h1 className="textline">___________________________________________________________________________</h1>
           
           <div className="services" style={{marginTop:'160px'}}>
             <div className="service-one">
@@ -47,11 +47,6 @@ class Main extends Component {
           </div>
 
         </div>
-
-
-
-      
-
 
       </main>
     );

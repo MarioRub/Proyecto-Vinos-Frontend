@@ -20,6 +20,44 @@ body * {
 box-shadow: 0px 10px 54px -11px rgba(0,0,0,0.75);
 }
 
+.titlename{
+  
+  margin-top: 80px;
+  font-Family: 'Anton';
+  font-Style:'sans-serif';
+}
+
+.textnameup{
+  margin-top: 40px;
+  font-Family: 'Gentium Basic';
+  font-Style:'serif';
+}
+
+.textname{
+  font-Family: 'Gentium Basic';
+  font-Style: 'serif';
+}
+
+.textline{
+  text-Align: center;
+  margin-Top:80px;
+  font-Family: 'Great Vibes';
+  font-Size:30px;
+}
+
+.notfound{
+  width: 683;
+  height: 384;
+  display: block;
+  margin: auto;
+  position: relative;
+
+}
+
+
+
+
+
 /*------------- NAVIGATION BAR -------------------*/
 
 .nav {

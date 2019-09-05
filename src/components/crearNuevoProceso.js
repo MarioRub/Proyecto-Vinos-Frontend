@@ -8,10 +8,9 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { makeStyles } from '@material-ui/core/styles';
-import { withStyles } from '@material-ui/core/styles';
-import CircularProgress from "@material-ui/core/CircularProgress";
 
+import CircularProgress from "@material-ui/core/CircularProgress";
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 const styles = { 
   root: {
@@ -110,7 +109,7 @@ class crearNuevaProceso extends Component {
 
 
             <FormControl className={styles.formControl}>
-            <InputLabel margin="dense">Selecciona la Finca</InputLabel>
+            
             
             <Select 
             value={selectedfinca}
@@ -118,12 +117,13 @@ class crearNuevaProceso extends Component {
             InputLabelProps={{
               shrink: true,
             }}
+            style={{width:'200px', margin:'20px', marginTop:'20px',}}
             >
             {items.map(item=>(  
               <MenuItem key={item.idFinca}value={item.idFinca}>{item.nombre}</MenuItem>
               ))}
             </Select>
-            
+            <FormHelperText style={{margin:'20px', marginTop:'1px'}}>Selecciona la Finca</FormHelperText>
           </FormControl>
           </form>
 
@@ -133,20 +133,22 @@ class crearNuevaProceso extends Component {
           <form className={styles.root} autoComplete="off">
 
               <FormControl className={styles.formControl}>
-              <InputLabel margin="dense">Selecciona el Producto</InputLabel>
-
+              
+              
               <Select 
               value={selectedproducto}
               onChange={event => this.handleChangeproducto(event.target.value)}
               InputLabelProps={{
               shrink: true,
               }}
+              style={{width:'200px', marginTop:'20px',margin:'20px'}}
               >
+
               {productos.map(item=>(  
               <MenuItem key={item.idProducto}value={item.idProducto}>{item.nombre}</MenuItem>
               ))}
               </Select>
-
+              <FormHelperText style={{margin:'20px',marginTop:'1px'}}>Selecciona el Producto</FormHelperText>
               </FormControl>
           </form>     
 
@@ -165,7 +167,8 @@ class crearNuevaProceso extends Component {
 							variant="outlined" 
 							InputLabelProps={{
 								shrink: true,
-							  }}
+                }}
+                style={{width:'200px',  margin:'20px', marginTop:'30px'}}
 						/>       
 
                  

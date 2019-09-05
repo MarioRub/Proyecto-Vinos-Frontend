@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
 import Card from '@material-ui/core/Card';
@@ -12,16 +11,9 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import CallIcon from '@material-ui/icons/Call';
-import AssignmentIcon from '@material-ui/icons/Assignment';
+import CircularProgress from "@material-ui/core/CircularProgress";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
-import LinkIcon from '@material-ui/icons/Launch'
-import EditIcon from '@material-ui/icons/Edit';
-
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Link } from 'react-router-dom';
 
@@ -99,7 +91,7 @@ class TarjetaProcesoInspeccionados extends React.Component {
     var {isLoaded, items}=this.state;
     const { classes } = this.props;
     if(!isLoaded){
-      return<div>Is Loading....</div>;
+      return<div><CircularProgress size={80} /></div>;
     }else{
     
     return (
@@ -113,19 +105,13 @@ class TarjetaProcesoInspeccionados extends React.Component {
                     <Avatar aria-label="Recipe" className={classes.avatar}>
                       {this.state.contador+1}
                     </Avatar>
-                  }
-                  action={
-                    <IconButton>
-                      <MoreVertIcon  />
-                    </IconButton>
-                  }
-                  
+                  }                  
                   subheader={item.nombre}
                 />
                 <CardMedia
                   className={classes.media}
                   image={"https://images.vexels.com/media/users/3/150252/raw/d5966833ace9d0da42dc27441817bb9c-ilustracion-de-dibujos-animados-de-finca-de-vinedo.jpg"}
-                  title="Paella dish"
+                  title="Finca"
                 />
                 <CardContent>
                   <Typography component="p">
@@ -142,7 +128,7 @@ class TarjetaProcesoInspeccionados extends React.Component {
                 </CardContent>
                 <CardActions className={classes.actions} disableActionSpacing>
                   <IconButton aria-label="Registrar LLamada">
-                  <Link to={`/mostrarcompras/${item.idProceso}`} ><CallIcon/></Link>&nbsp; 
+                  <Link to={`/mostrarcompras/${item.idProceso}`} ><ShoppingCartIcon/></Link>&nbsp; 
                   </IconButton>               
                   <IconButton
                     className={classnames(classes.expand, {

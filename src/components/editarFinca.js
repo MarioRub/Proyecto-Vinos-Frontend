@@ -74,6 +74,7 @@ class editarFinca extends Component {
         municipio:municipio,
         departamento:departamento,
         descripcion:descripcion,
+        estado:'Creado'
       }
      
 
@@ -91,7 +92,7 @@ class editarFinca extends Component {
         return (
           
             
-            <div className="container">
+            <div>
                <div>{this.state.error}</div>
                <Navigation/>
                 <div>
@@ -157,12 +158,12 @@ class editarFinca extends Component {
                  
                  <div style={{ marginTop: 20 }} >
                 
-                 <Link to="/Fincas">
-                <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>this.PostApi(fincaEditada)} >
+                 ,<Link to ="/fincas">
+                <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>this.PostApi(fincaEditada )} >
                  Guardar
                 </Button>
-                 
-                </Link>
+                </Link> 
+               
 
                 <Link to="/Fincas">
                 <Button variant="contained" color="secondary"    style={{ marginLeft: 10 }}>
@@ -212,11 +213,11 @@ class editarFinca extends Component {
              fincaEditada
             )
             .then(response => {
-              alert("Exito al Guardar los datos!!!")
+              alert("Exito al Editar los datos!!!")
               
             })
             .catch(error => {
-              alert("ERROR AL GUARDAR LOS DATOS")
+              alert("ERROR AL EDITAR LOS DATOS")
             })
 
 }

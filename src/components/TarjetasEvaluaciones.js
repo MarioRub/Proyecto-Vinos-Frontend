@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
 import Card from '@material-ui/core/Card';
@@ -12,31 +11,19 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import CallIcon from '@material-ui/icons/Call';
-import AssignmentIcon from '@material-ui/icons/Assignment';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
-import LinkIcon from '@material-ui/icons/Launch'
-import EditIcon from '@material-ui/icons/Edit';
 import CircularProgress from "@material-ui/core/CircularProgress";
-
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { Link } from 'react-router-dom';
+
 
 const Api = "https://localhost:44319/api/fincaevaluacion/";
-
-
 
 const DeleteApi =(idEvaluacion) => {
   fetch(Api+idEvaluacion, {
       method: 'DELETE'
 		})
 }
-
-
 
 const styles = theme => ({
   card: {
@@ -105,7 +92,7 @@ class TarjetasEvaluaciones extends React.Component {
   };
 
   render() {
-    var {isLoaded, items}=this.state;
+    var {isLoaded }=this.state;
     const { classes } = this.props;
     if(!isLoaded){
       return<div><CircularProgress size={80} /></div>;

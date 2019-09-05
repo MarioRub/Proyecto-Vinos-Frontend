@@ -1,7 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import CircularProgress from "@material-ui/core/CircularProgress";
-import classnames from 'classnames';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
@@ -10,10 +9,6 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
-import Button from '@material-ui/core/Button';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
@@ -33,8 +28,9 @@ const DeleteApi =(idFinca) => {
 
   axios.delete(`${Api}${idFinca}`)
   .then(res => {
-  alert("Borrada con Exito")
-   reload(); 
+  alert("Borrada con Exito");
+  console.log(idFinca);
+   reload();  
   });
  
     
@@ -75,6 +71,11 @@ const styles = theme => ({
 
 
 class TarjetasFincas extends React.Component {
+  
+  
+  
+  
+  
   state = { expanded: false,}
 
   constructor(props) {
@@ -83,23 +84,28 @@ class TarjetasFincas extends React.Component {
       isLoaded: false,
       items: [],
     };
+
+
   }
-  
-  componentDidMount() { 
-    fetch('https://localhost:44319/api/finca')
-          .then(res => res.json())
-          .then(json => {
-            console.log(json);
-            this.setState({
-              isLoaded:true,
-              items: json,
-            })
-          });
-  
-  }
+
+
+componentWillMount(){
+  fetch('https://localhost:44319/api/finca')
+  .then(res => res.json())
+  .then(json => {
+    console.log("Fetch Realizado")
+    this.setState({
+      isLoaded:true,
+      items: json,
+    })
+  }); 
+}
+
+
   
 
   render() {
+
     const { classes } = this.props;
     var  {isLoaded,items} = this.state;
     if(!isLoaded){
@@ -122,24 +128,17 @@ class TarjetasFincas extends React.Component {
                   title="Paella dish"
                 />
                 <CardContent>
-                  <Typography component="p" color="inherit">
-                    <strong>Municipio:</strong>
-                    {item.municipio}  
+                  <Typography component="p">
+                    <strong>Municipio:</strong> {item.municipio}  
                   </Typography>
-               </CardContent>
-               <CardContent>
                   <Typography component="p" color="inherit">
                   <strong>Departameto:</strong>
                     {item.departamento}  
                   </Typography>
-               </CardContent>
-                <CardContent>
                   <Typography component="p" color="inherit">
                   <strong>Descripcion:</strong>
                     {item.descripcion}  
                   </Typography>
-               </CardContent>
-               <CardContent>
                   <Typography component="p" color="inherit">
                   <strong>Estado Actual:</strong>
                     {item.estado}  

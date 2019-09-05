@@ -22,29 +22,13 @@ const reload = () => {
 
 
 class Fincas extends Component {
-    
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            uses: null,   
-        }
-       
 
-        this.setState({
-            uses:this.props.location.state,
-        })
-    
-    }
-    
 
-    
+
     render() {
         
-        var {uses}= this.state;
-        if(uses==='true'){
-            this.reload();}
-            else{
+        
         return (
             
             
@@ -76,7 +60,7 @@ class Fincas extends Component {
             
         );
       }
-    }
+    
  
 }
 

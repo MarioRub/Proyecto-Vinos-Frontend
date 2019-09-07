@@ -18,7 +18,9 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
 
-const Api = "https://localhost:44319/api/finca/";
+const baseUrl='https://proyectovinowwebapi20190906113815.azurewebsites.net/api/';
+
+const Api = "https://proyectovinowwebapi20190906113815.azurewebsites.net/api/finca/";
 
 const reload = () => {
   window.location.reload(true);
@@ -77,7 +79,7 @@ class TarjetasMostrarCompras extends React.Component {
   }
   
   componentDidMount(){
-    fetch('https://localhost:44319/api/fincacompra/'+this.props.id)
+    fetch('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/fincacompra/'+this.props.id)
     .then(res=>res.json())
     .then(json=>{
       this.setState({

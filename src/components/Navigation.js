@@ -19,9 +19,9 @@ class Navigation extends Component {
             
                         
                    
+            <div  style={{backgroundColor:'white'}}>
             <div style={{backgroundColor:'white'}}>
-            <div style={{backgroundColor:'white'}}>
-        <h1 style={{textAlign:'center',marginTop:'3px', fontFamily: 'Great Vibes',fontSize:'72px'}}>Proyecto Vinos</h1>
+        <h2 style={{textAlign:'center',marginTop:'3px', fontFamily: 'Great Vibes',fontSize:'72px'}}>Wine Production Magnament</h2>
         <h1 style={{textAlign:'center',marginTop:'0px', fontFamily: 'Great Vibes',fontSize:'30px'}}>___________________________</h1>
         </div> 
                     <div className="row" style={{backgroundColor:'white',marginLeft: '680px',textAlign:'center'}}>

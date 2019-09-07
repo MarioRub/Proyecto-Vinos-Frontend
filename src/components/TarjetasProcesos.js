@@ -28,7 +28,7 @@ import { Link } from 'react-router-dom';
 
 
 
-
+const baseUrl='https://proyectovinowwebapi20190906113815.azurewebsites.net/api/';
 
 const styles = theme => ({
   card: {
@@ -80,7 +80,7 @@ class TarjetasProcesos extends React.Component {
 
 
   componentDidMount(){
-    fetch('https://localhost:44319/api/fincaproceso')
+    fetch(baseUrl+'proceso')
     .then(res=>res.json())
     .then(json=>{
       this.setState({
@@ -91,7 +91,7 @@ class TarjetasProcesos extends React.Component {
   }
 
   componentWillMount() {
-    fetch('https://localhost:44319/api/fincaproceso')
+    fetch(baseUrl+'proceso')
     .then(res=>res.json())
     .then(json=>{
       console.log("Hola")

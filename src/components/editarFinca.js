@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
 
-const Api = "https://localhost:44319/api/finca/";
+const Api = "https://proyectovinowwebapi20190906113815.azurewebsites.net/api/finca/";
 
 
 class editarFinca extends Component {

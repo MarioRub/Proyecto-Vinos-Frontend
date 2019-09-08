@@ -36,7 +36,7 @@ class crearNuevaFinca extends Component {
           municipio:this.state.municipio,
           departamento:this.state.departamento,
           descripcion:this.state.descripcion,
-          estado:'creado',
+          estado:'Iniciado',
       }
       
         return (

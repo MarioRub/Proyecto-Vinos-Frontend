@@ -39,7 +39,7 @@ class Procesos extends Component {
                 <div>
                     <br/>
                     <Link to="/crearNuevaProceso">
-                    <Fab color="primary" aria-label="add" style={{ marginTop: 50}} style={{ marginLeft: 1800}}>
+                    <Fab color="primary" aria-label="add" className="buttonAdd">
                         <AddIcon/>
                     </Fab>
                     </Link>

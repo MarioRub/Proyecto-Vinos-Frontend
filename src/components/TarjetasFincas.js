@@ -72,10 +72,6 @@ const styles = theme => ({
 
 class TarjetasFincas extends React.Component {
   
-  
-  
-  
-  
   state = { expanded: false,}
 
   constructor(props) {
@@ -90,7 +86,7 @@ class TarjetasFincas extends React.Component {
 
 
 componentWillMount(){
-  fetch('https://localhost:44319/api/finca')
+  fetch(Api)
   .then(res => res.json())
   .then(json => {
     console.log("Fetch Realizado")

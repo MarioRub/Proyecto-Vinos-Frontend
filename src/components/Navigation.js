@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import MenuItem from '@material-ui/core/MenuItem';
-import 'typeface-roboto';
+import 'typeface-roboto';   
+import {Grid,Col,Row} from 'react-flexbox-grid';
 
 
 
@@ -18,16 +19,17 @@ class Navigation extends Component {
 
             
                         
-                   
-            <div style={{backgroundColor:'white'}}>
-            <div style={{backgroundColor:'white'}}>
-        <h1 style={{textAlign:'center',marginTop:'3px', fontFamily: 'Great Vibes',fontSize:'72px'}}>Proyecto Vinos</h1>
-        <h1 style={{textAlign:'center',marginTop:'0px', fontFamily: 'Great Vibes',fontSize:'30px'}}>___________________________</h1>
-        </div> 
-                    <div className="row" style={{backgroundColor:'white',marginLeft: '680px',textAlign:'center'}}>
-                    
+            <div> 
+                
+                
+                    <div class="box"style={{backgroundColor:'white'}}>
                         
-                           
+                            <h1 style={{textAlign:'center',marginTop:'3px', fontFamily: 'Great Vibes',fontSize:'72px'}}>Wine Production Management</h1>
+                                                
+
+                    <Row>
+                    <div className="row" style={{backgroundColor:'white',textAlign:'center'}}>
+                    
                             <Link to="/">
                                 <MenuItem style={{textAlign:'center',color:"black",fontSize:'32px'}}> Inicio</MenuItem>
                             </Link>
@@ -47,7 +49,13 @@ class Navigation extends Component {
                         
                         
                         </div>
-                        </div>
+                       
+                        </Row> 
+                    </div>
+                    
+                
+
+            </div>  
 
         )
     }

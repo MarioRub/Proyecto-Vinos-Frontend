@@ -4,6 +4,8 @@ import './App.css';
 import Header from "./components/header";
 import Main from "./components/main";
 import Footer from "./components/footer";
+import {Grid,Col,Row} from 'react-flexbox-grid';
+import vinoimagen from "./images/vinovino.png"
 
 
 class App extends Component {
@@ -26,11 +28,14 @@ class App extends Component {
     return (
       
       <div>
-        
-        <Header/>
+          <Header/>
+          
+          <img src={vinoimagen} />
+
         <Main />
+
         <Footer />
-      </div>
+        </div>
       
       
 

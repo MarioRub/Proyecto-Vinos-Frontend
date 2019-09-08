@@ -19,20 +19,11 @@ class Header extends Component {
 
   render() {
     return (
-
       <div>
-         
         <Navigation/>
         <div class="table-responsive">
           <table class="table">
-            <header>
-              
-              <div className="head" style={{backgroundColor:'white'}} >
-                
-                <div>
-                </div>
-              </div>
-            </header>
+
           </table>
         </div>
 

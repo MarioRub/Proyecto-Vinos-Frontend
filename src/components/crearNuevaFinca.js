@@ -132,7 +132,7 @@ const PostApi = (fincaNueva) => (
   
 
   axios
-			.post('https://localhost:44319/api/finca', fincaNueva)
+			.post('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/finca', fincaNueva)
 			.then(response => {
 				alert("Exito al Guardar los datos!!!")
 				

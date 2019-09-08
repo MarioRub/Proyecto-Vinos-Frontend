@@ -16,9 +16,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import axios from 'axios';
 
 
+const baseUrl='https://proyectovinowwebapi20190906113815.azurewebsites.net/api/';
 
-
-const Api = "https://localhost:44319/api/finca/";
+const Api = baseUrl+"finca/";
 
 const reload = () => {
   window.location.reload(true);
@@ -86,7 +86,9 @@ class TarjetasFincas extends React.Component {
 
 
 componentWillMount(){
-  fetch(Api)
+
+  fetch(baseUrl+'finca')
+
   .then(res => res.json())
   .then(json => {
     console.log("Fetch Realizado")

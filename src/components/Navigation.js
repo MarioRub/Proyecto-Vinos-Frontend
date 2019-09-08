@@ -19,10 +19,12 @@ class Navigation extends Component {
 
             
                         
+
             <div> 
                 
                 
                     <div class="box"style={{backgroundColor:'white'}}>
+
                         
                             <h1 style={{textAlign:'center',marginTop:'3px', fontFamily: 'Great Vibes',fontSize:'72px'}}>Wine Production Management</h1>
                                                 

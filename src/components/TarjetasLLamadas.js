@@ -26,8 +26,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Link } from 'react-router-dom';
 
-
-const Api = "https://localhost:44319/api/fincallamada/";
+const baseUrl='https://proyectovinowwebapi20190906113815.azurewebsites.net/api/';
+const Api = "https://proyectovinowwebapi20190906113815.azurewebsites.net/api/fincallamada/";
 
 
 
@@ -87,7 +87,7 @@ class TarjetasLLamadas extends React.Component {
 
 
   componentDidMount(){
-    fetch('https://localhost:44319/api/fincallamada/'+this.props.id)
+    fetch('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/fincallamada/'+this.props.id)
     .then(res=>res.json())
     .then(json=>{
       this.setState({

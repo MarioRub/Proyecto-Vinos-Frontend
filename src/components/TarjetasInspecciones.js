@@ -26,7 +26,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Link } from 'react-router-dom';
 
 
-const Api = "https://localhost:44319/api/fincainspeccion/";
+const Api = "https://proyectovinowwebapi20190906113815.azurewebsites.net/api/fincainspeccion/";
 
 
 
@@ -88,7 +88,7 @@ class TarjetasInspecciones extends React.Component {
 
 
   componentDidMount(){
-    fetch('https://localhost:44319/api/fincainspeccion/'+this.props.id)
+    fetch('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/fincainspeccion/'+this.props.id)
     .then(res=>res.json())
     .then(json=>{
       this.setState({

@@ -30,7 +30,7 @@ class PostForm extends Component {
 		e.preventDefault()
 		
 		axios
-			.post('https://localhost:44319/api/fincallamada', this.state)
+			.post('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/fincallamada', this.state)
 			.then(response => {
 				alert("Exito al Guardar los datos!!!")
 				reload();

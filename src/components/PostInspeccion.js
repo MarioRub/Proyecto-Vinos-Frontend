@@ -30,7 +30,7 @@ class PostInspeccion extends Component {
 		e.preventDefault()
 		console.log(this.state)
 		axios
-			.post('https://localhost:44319/api/fincainspeccion', this.state)
+			.post('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/fincainspeccion', this.state)
 			.then(response => {
 				alert("Exito al Guardar los datos!!!")
 				reload();

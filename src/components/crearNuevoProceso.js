@@ -63,7 +63,7 @@ class crearNuevaProceso extends Component {
   
 
   componentDidMount() { 
-    fetch('https://localhost:44319/api/finca')
+    fetch('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/finca')
           .then(res => res.json())
           .then(json => {
             console.log(json);
@@ -73,7 +73,7 @@ class crearNuevaProceso extends Component {
             })
           });
 
-    fetch('https://localhost:44319/api/producto')
+    fetch('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/productos')
            .then(res => res.json())
           .then(json => {
             console.log(json);

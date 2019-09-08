@@ -204,7 +204,7 @@ class crearNuevaProceso extends Component {
      
 const PostApi = (selectedfinca,selectedproducto,fechaInicio,estado,proceso) => (
   
-  fetch('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/fincaproceso', {
+  fetch('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/proceso', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

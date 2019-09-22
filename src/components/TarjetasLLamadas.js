@@ -22,13 +22,11 @@ import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
 import LinkIcon from '@material-ui/icons/Launch'
 import EditIcon from '@material-ui/icons/Edit';
 import CircularProgress from "@material-ui/core/CircularProgress";
-
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Link } from 'react-router-dom';
+import {baseUrl} from '../constans/api_url';
 
-const baseUrl='https://proyectovinowwebapi20190906113815.azurewebsites.net/api/';
-const Api = "https://proyectovinowwebapi20190906113815.azurewebsites.net/api/fincallamada/";
-
+const Api = baseUrl + "fincallamada/";
 
 
 const DeleteApi =(idLLamada) => {
@@ -87,7 +85,7 @@ class TarjetasLLamadas extends React.Component {
 
 
   componentDidMount(){
-    fetch('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/fincallamada/'+this.props.id)
+    fetch(Api+this.props.id)
     .then(res=>res.json())
     .then(json=>{
       this.setState({

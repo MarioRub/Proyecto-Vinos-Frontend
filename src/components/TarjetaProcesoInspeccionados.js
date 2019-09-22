@@ -16,10 +16,11 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Link } from 'react-router-dom';
+import {baseUrl} from '../constans/api_url';
 
 
 
-
+const Api = baseUrl+"fincacompra/";
 
 const styles = theme => ({
   card: {
@@ -71,7 +72,7 @@ class TarjetaProcesoInspeccionados extends React.Component {
 
 
   componentDidMount(){
-    fetch('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/fincacompra')
+    fetch(Api)
     .then(res=>res.json())
     .then(json=>{
       this.setState({

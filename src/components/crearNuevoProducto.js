@@ -5,44 +5,75 @@ import Navigation from "./Navigation";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import {baseUrl} from '../constans/api_url';
 
 
 
+const Api = baseUrl+"productos/";
 
-const Api = baseUrl+"finca/";
+const styles = { 
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  formControl: {
+    
+    minWidth: 120,
+    maxWidth: 300,
+  },
 
+  noLabel: {
+    
+  },
+}
 
-
-class crearNuevaFinca extends Component {
+class crearNuevoProducto extends Component {
   
+  
+  handleChangesemilla(value) {
+    this.setState({ selectedproducto: value });
+  }  
+
   constructor(props){
     super(props);
 
     this.state = {
         nombre:null,
-        municipio:null,
-        departamento:null,
-        descripcion:null
+        descripcion:null,
+        semillas:[],
+        selectedsemilla : null,
     };
 
+
+
+
         this.updateInputnombre = this.updateInputnombre.bind(this);
-        this.updateInputmunicipio = this.updateInputmunicipio.bind(this);
-        this.updateInputdepartamento = this.updateInputdepartamento.bind(this);
         this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
   };
-
+  
+  componentDidMount(){ 
+    fetch(Api+"/semilla")
+    .then(res => res.json())
+    .then(json => {
+      console.log(json);
+      this.setState({
+        semillas: json,
+      })
+    });
+  }
     
     render() {
       
-      
-
-      const fincaNueva = {
+      const { semillas, selectedsemilla } = this.state;
+      const productoNuevo = {
           nombre:this.state.nombre,
-          municipio:this.state.municipio,
-          departamento:this.state.departamento,
           descripcion:this.state.descripcion,
-          estado:'Iniciado',
+          estado: "Creado",
+          idSemilla: this.state.semillas.idSemilla,
       }
       
         return (
@@ -53,7 +84,7 @@ class crearNuevaFinca extends Component {
                <Navigation/>
                 <div>
                   <br/>
-                  <h2>Ingrese Informacion de la Finca:</h2></div>
+                  <h2>Ingrese Informacion del Nuevo Producto:</h2></div>
                 
            <form>
                <TextField
@@ -61,27 +92,11 @@ class crearNuevaFinca extends Component {
                     label="Nombre"
                     margin="normal"
                     variant="outlined" 
-                    onChange={this.updateInputnombre}
-                    
-                    
+                    onChange={this.updateInputnombre} 
                  />
-                <TextField
-                    name="municipio"
-                    label="Municipio"
-                    margin="normal"
-                    variant="outlined"  
-                    onChange={this.updateInputmunicipio}
-                    style={{ marginLeft: 10 }}
-                 />
-                 <TextField
-                    name="departamento"
-                    label="Departamento"
-                    margin="normal"
-                    variant="outlined"  
-                    onChange={this.updateInputdepartamento}
-                    style={{ marginLeft: 10 }}
-                 />
+
                 <br/>
+                
                 <TextField
                     name="descripcion"
                     label="Descripcion"
@@ -90,14 +105,36 @@ class crearNuevaFinca extends Component {
                     onChange={this.updateInputdescripcion}
                      fullWidth
                  />
+
+            <form className={styles.root} autoComplete="off">
+
+              <FormControl className={styles.formControl}>
+              
+              
+              <Select 
+              value={selectedsemilla}
+              onChange={event => this.handleChangesemilla(event.target.value)}
+              InputLabelProps={{
+              shrink: true,
+              }}
+              style={{width:'200px', marginTop:'20px',margin:'20px'}}
+              >
+
+              {semillas.map(item=>(  
+              <MenuItem key={item.idSemilla}value={item.idSemilla}>{item.nombre}</MenuItem>
+              ))}
+              </Select>
+              <FormHelperText style={{margin:'20px',marginTop:'1px'}}>Selecciona la Semilla</FormHelperText>
+              </FormControl>
+          </form>     
                  
                  <div style={{ marginTop: 20 }} >
-                    <Link  to="/Fincas" refresh="true">
-                        <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>PostApi(fincaNueva)} >
+                    <Link  to="/" refresh="true">
+                        <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>PostApi(productoNuevo)} >
                         Guardar
                         </Button>
                     </Link>
-                    <Link to="/Fincas">
+                    <Link to="/">
                         <Button variant="contained" color="secondary"    style={{ marginLeft: 10 }}>
                         Cancelar
                         </Button>
@@ -118,27 +155,20 @@ class crearNuevaFinca extends Component {
          this.setState({nombre : event.target.value})
       }
 
-      updateInputmunicipio(event){
-        this.setState({municipio : event.target.value})
-      }
-
-      updateInputdepartamento(event){
-        this.setState({departamento : event.target.value})
-      }
-
       updateInputdescripcion(event){
         this.setState({descripcion : event.target.value})
       }
+
           
 
 }
 
-const PostApi = (fincaNueva) => (
+const PostApi = (productoNuevo) => (
 
   
 
   axios
-			.post(Api, fincaNueva)
+			.post(Api, productoNuevo)
 			.then(response => {
 				alert("Exito al Guardar los datos!!!")
 				
@@ -150,4 +180,4 @@ const PostApi = (fincaNueva) => (
   
 )
 
-export default crearNuevaFinca;
+export default crearNuevoProducto;

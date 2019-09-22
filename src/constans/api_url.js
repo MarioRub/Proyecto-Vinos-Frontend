@@ -1,0 +1,1 @@
+export const baseUrl='https://proyectovinowwebapi20190906113815.azurewebsites.net/api/';

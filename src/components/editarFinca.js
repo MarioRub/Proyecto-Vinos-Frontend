@@ -5,9 +5,12 @@ import Navigation from "./Navigation";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import {baseUrl} from '../constans/api_url';
 
 
-const Api = "https://proyectovinowwebapi20190906113815.azurewebsites.net/api/finca/";
+
+
+const Api = baseUrl+"finca/";
 
 
 class editarFinca extends Component {
@@ -158,7 +161,7 @@ class editarFinca extends Component {
                  
                  <div style={{ marginTop: 20 }} >
                 
-                 ,<Link to ="/fincas">
+                 ,<Link to ="/fincas" refresh ="true">
                 <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>this.PostApi(fincaEditada )} >
                  Guardar
                 </Button>

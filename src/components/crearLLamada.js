@@ -5,13 +5,17 @@ import Navigation from "./Navigation";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import {baseUrl} from '../constans/api_url';
+
+
+const Api = baseUrl+"finca/";
 
 const reload = () => {
   window.location.reload(true);
 }
 const PostApi = ({nombre_finca,descripcion_finca,departamento_finca,municipio_finca,estado_finca}) => (
 
-  fetch('https://localhost:44319/api/finca', {
+  fetch(Api, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

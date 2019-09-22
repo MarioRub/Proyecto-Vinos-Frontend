@@ -10,7 +10,6 @@ import Fincas from './components/Fincas';
 import Appcss from './App.css'
 import NotFound from './components/NotFound';
 import {
-    BrowserRouter,
     Switch,
   } from "react-router-dom";
   
@@ -25,6 +24,8 @@ import editarFinca from './components/editarFinca';
 import crearNuevaProceso from './components/crearNuevoProceso';
 import Compras from './components/Compras';
 import MostrarCompras from './components/MostrarCompras';
+import crearNuevoProducto from './components/crearNuevoProducto';
+import crearNuevaSemilla from './components/crearNuevaSemilla'
 
 
 
@@ -39,15 +40,15 @@ ReactDOM.render(
                 <Route path='/Fincas' component={Fincas} />
                 <Route path='/crearNuevaFinca' component={crearNuevaFinca} />
                 <Route path='/Procesos' component={Procesos} />
-                
                 <Route path='/LLamadas/:idProceso' component={LLamadas} />
                 <Route path='/Evaluaciones/:idProceso' component={Evaluaciones} />
                 <Route path='/Inspecciones/:idProceso' component={Inspecciones} />
-               
                 <Route path='/editarFinca' component={editarFinca} />
                 <Route path='/crearNuevaProceso' component={crearNuevaProceso} />
                 <Route path='/Compras' component={Compras} />
                 <Route path='/MostrarCompras/:idProceso' component={MostrarCompras} />
+                <Route path='/crearNuevoProducto' component={crearNuevoProducto} />
+                <Route path='/crearNuevaSemilla' component={crearNuevaSemilla} />
                 <Route component={NotFound} />
             </Switch>
         </div>
@@ -55,7 +56,5 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+
 registerServiceWorker();

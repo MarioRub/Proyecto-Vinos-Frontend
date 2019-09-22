@@ -14,9 +14,10 @@ import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
 import CardMedia from '@material-ui/core/CardMedia';
 import axios from 'axios';
+import {baseUrl} from '../constans/api_url';
 
 
-const baseUrl='https://proyectovinowwebapi20190906113815.azurewebsites.net/api/';
+
 
 const Api = baseUrl+"finca/";
 

@@ -5,44 +5,59 @@ import Navigation from "./Navigation";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import {baseUrl} from '../constans/api_url';
 
 
 
+const Api = baseUrl+"semilla/";
 
-const Api = baseUrl+"finca/";
+const styles = { 
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  formControl: {
+    
+    minWidth: 120,
+    maxWidth: 300,
+  },
 
+  noLabel: {
+    
+  },
+}
 
-
-class crearNuevaFinca extends Component {
+class crearNuevaSemilla extends Component {
   
+  
+
+
   constructor(props){
     super(props);
 
     this.state = {
         nombre:null,
-        municipio:null,
-        departamento:null,
-        descripcion:null
+        descripcion:null,
     };
 
+
+
+
         this.updateInputnombre = this.updateInputnombre.bind(this);
-        this.updateInputmunicipio = this.updateInputmunicipio.bind(this);
-        this.updateInputdepartamento = this.updateInputdepartamento.bind(this);
         this.updateInputdescripcion = this.updateInputdescripcion.bind(this);
   };
-
+  
     
     render() {
       
-      
-
-      const fincaNueva = {
+      const semillaNueva = {
           nombre:this.state.nombre,
-          municipio:this.state.municipio,
-          departamento:this.state.departamento,
           descripcion:this.state.descripcion,
-          estado:'Iniciado',
+          estado: "Creado",
       }
       
         return (
@@ -53,7 +68,7 @@ class crearNuevaFinca extends Component {
                <Navigation/>
                 <div>
                   <br/>
-                  <h2>Ingrese Informacion de la Finca:</h2></div>
+                  <h2>Ingrese la Informacion de la Nueva Semilla:</h2></div>
                 
            <form>
                <TextField
@@ -61,27 +76,11 @@ class crearNuevaFinca extends Component {
                     label="Nombre"
                     margin="normal"
                     variant="outlined" 
-                    onChange={this.updateInputnombre}
-                    
-                    
+                    onChange={this.updateInputnombre} 
                  />
-                <TextField
-                    name="municipio"
-                    label="Municipio"
-                    margin="normal"
-                    variant="outlined"  
-                    onChange={this.updateInputmunicipio}
-                    style={{ marginLeft: 10 }}
-                 />
-                 <TextField
-                    name="departamento"
-                    label="Departamento"
-                    margin="normal"
-                    variant="outlined"  
-                    onChange={this.updateInputdepartamento}
-                    style={{ marginLeft: 10 }}
-                 />
+
                 <br/>
+                
                 <TextField
                     name="descripcion"
                     label="Descripcion"
@@ -92,12 +91,12 @@ class crearNuevaFinca extends Component {
                  />
                  
                  <div style={{ marginTop: 20 }} >
-                    <Link  to="/Fincas" refresh="true">
-                        <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>PostApi(fincaNueva)} >
+                    <Link  to="/" refresh="true">
+                        <Button variant="contained" color="primary"   style={{ marginTop: 1 }} onClick={()=>PostApi(semillaNueva)} >
                         Guardar
                         </Button>
                     </Link>
-                    <Link to="/Fincas">
+                    <Link to="/">
                         <Button variant="contained" color="secondary"    style={{ marginLeft: 10 }}>
                         Cancelar
                         </Button>
@@ -118,27 +117,20 @@ class crearNuevaFinca extends Component {
          this.setState({nombre : event.target.value})
       }
 
-      updateInputmunicipio(event){
-        this.setState({municipio : event.target.value})
-      }
-
-      updateInputdepartamento(event){
-        this.setState({departamento : event.target.value})
-      }
-
       updateInputdescripcion(event){
         this.setState({descripcion : event.target.value})
       }
+
           
 
 }
 
-const PostApi = (fincaNueva) => (
+const PostApi = (semillaNueva) => (
 
   
 
   axios
-			.post(Api, fincaNueva)
+			.post(Api, semillaNueva)
 			.then(response => {
 				alert("Exito al Guardar los datos!!!")
 				
@@ -150,4 +142,4 @@ const PostApi = (fincaNueva) => (
   
 )
 
-export default crearNuevaFinca;
+export default crearNuevaSemilla;

@@ -12,23 +12,18 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import CallIcon from '@material-ui/icons/Call';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
-import LinkIcon from '@material-ui/icons/Launch'
 import EditIcon from '@material-ui/icons/Edit';
 import CircularProgress from "@material-ui/core/CircularProgress";
-
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Link } from 'react-router-dom';
+import {baseUrl} from '../constans/api_url';
 
+const Api = baseUrl + "proceso/";
 
-
-const baseUrl='https://proyectovinowwebapi20190906113815.azurewebsites.net/api/';
 
 const styles = theme => ({
   card: {
@@ -77,24 +72,10 @@ class TarjetasProcesos extends React.Component {
   }
 
 
-
-
-  componentDidMount(){
-    fetch(baseUrl+'proceso')
-    .then(res=>res.json())
-    .then(json=>{
-      this.setState({
-        isLoaded:true,
-        items:json
-      })
-    });
-  }
-
   componentWillMount() {
-    fetch(baseUrl+'proceso')
+    fetch(Api)
     .then(res=>res.json())
     .then(json=>{
-      console.log("Hola")
       this.setState({
         isLoaded:true,
         items:json

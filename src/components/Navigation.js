@@ -47,8 +47,14 @@ class Navigation extends Component {
                             <Link to="/Compras">
                                 <MenuItem style={{textAlign:'center',color:"black",fontSize:'32px'}} >Compras</MenuItem>
                             </Link>
-                        
-                        
+                            
+                            <Link to="/crearNuevoProducto">
+                                <MenuItem style={{textAlign:'center',color:"black",fontSize:'32px'}} >Productos</MenuItem>
+                            </Link>
+
+                            <Link to="/crearNuevaSemilla">
+                                <MenuItem style={{textAlign:'center',color:"black",fontSize:'32px'}} >Semillas</MenuItem>
+                            </Link>
                         
                         </div>
                        

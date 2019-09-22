@@ -8,9 +8,12 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-
 import CircularProgress from "@material-ui/core/CircularProgress";
 import FormHelperText from '@material-ui/core/FormHelperText';
+import {baseUrl} from '../constans/api_url';
+
+
+const Api = baseUrl+"proceso/";
 
 const styles = { 
   root: {
@@ -58,12 +61,11 @@ class crearNuevaProceso extends Component {
   };
 
   changeHandler = e => {
-		this.setState({ [e.target.name]: e.target.value })
+    this.setState({ [e.target.name]: e.target.value })
   }
-  
 
   componentDidMount() { 
-    fetch('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/finca')
+    fetch(Api+"/finca")
           .then(res => res.json())
           .then(json => {
             console.log(json);
@@ -73,7 +75,7 @@ class crearNuevaProceso extends Component {
             })
           });
 
-    fetch('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/productos')
+    fetch(Api+"/productos")
            .then(res => res.json())
           .then(json => {
             console.log(json);
@@ -204,7 +206,7 @@ class crearNuevaProceso extends Component {
      
 const PostApi = (selectedfinca,selectedproducto,fechaInicio,estado,proceso) => (
   
-  fetch('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/proceso', {
+  fetch(Api, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

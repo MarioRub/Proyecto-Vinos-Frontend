@@ -3,6 +3,9 @@ import axios from 'axios'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
+import {baseUrl} from '../constans/api_url';
+
+const Api = baseUrl + "fincainspeccion/";
 
 const reload = () => {
 	window.location.reload(true);
@@ -30,7 +33,7 @@ class PostInspeccion extends Component {
 		e.preventDefault()
 		console.log(this.state)
 		axios
-			.post('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/fincainspeccion', this.state)
+			.post(Api, this.state)
 			.then(response => {
 				alert("Exito al Guardar los datos!!!")
 				reload();

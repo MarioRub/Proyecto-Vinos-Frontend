@@ -15,9 +15,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CircularProgress from "@material-ui/core/CircularProgress";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import {baseUrl} from '../constans/api_url';
 
-
-const Api = "https://proyectovinowwebapi20190906113815.azurewebsites.net/api/fincaevaluacion/";
+const Api = baseUrl + "fincaevaluacion/";
 
 const DeleteApi =(idEvaluacion) => {
   fetch(Api+idEvaluacion, {
@@ -75,7 +75,7 @@ class TarjetasEvaluaciones extends React.Component {
 
 
   componentDidMount(){
-    fetch('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/fincaevaluacion/'+this.props.id)
+    fetch(Api+this.props.id)
     .then(res=>res.json())
     .then(json=>{
       this.setState({

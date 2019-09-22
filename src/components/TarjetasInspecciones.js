@@ -24,10 +24,9 @@ import EditIcon from '@material-ui/icons/Edit';
 import CircularProgress from "@material-ui/core/CircularProgress";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Link } from 'react-router-dom';
+import {baseUrl} from '../constans/api_url';
 
-
-const Api = "https://proyectovinowwebapi20190906113815.azurewebsites.net/api/fincainspeccion/";
-
+const Api = baseUrl + "fincainspeccion/";
 
 
 const DeleteApi =(idInspeccion) => {
@@ -88,7 +87,7 @@ class TarjetasInspecciones extends React.Component {
 
 
   componentDidMount(){
-    fetch('https://proyectovinowwebapi20190906113815.azurewebsites.net/api/fincainspeccion/'+this.props.id)
+    fetch(Api+this.props.id)
     .then(res=>res.json())
     .then(json=>{
       this.setState({
